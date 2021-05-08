@@ -1,0 +1,25 @@
+version: "2.0"
+
+stories:
+
+## datos personales
+- story: datos_personales
+  steps:
+    - intent: greet
+    - action: utter_ask_for_name
+    - intent: provide_name
+    - action: utter_gracias
+    - action: utter_ask_for_age
+    - intent: provide_age
+    - action: utter_gracias
+    - action: utter_goodbye
+
+- story: nombre_2_pasos
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - action: utter_ask_for_name
+    - intent: provide_name
+    - action: utter_happy
+    - action: utter_goodbye
+
