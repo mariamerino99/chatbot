@@ -18,6 +18,44 @@ stories:
         Tengo [21]{"entity":"age"} años
     - action: utter_goodbye
 
+- story: Ask for name and age and antecedents no
+  steps:
+    - user: |
+        buenos días
+      intent: greet
+    - action: utter_ask_for_name
+    - user: |
+        Soy [Maria]{"entity":"name"}
+      intent: provide_name
+    - action: utter_ask_for_age
+    - user: |
+        Mi edad es de [21]{"entity":"age"} años
+    - action: utter_antecedentes
+    - user: |
+        No, la verdad que nadie de mi familia lo ha tenido
+      intent: deny
+    - action: utter_gracias
+    - action: utter_goodbye
+
+- story: Ask for name and age and antecedents sí
+  steps:
+    - user: |
+        buenos días
+      intent: greet
+    - action: utter_ask_for_name
+    - user: |
+        Soy [Maria]{"entity":"name"}
+      intent: provide_name
+    - action: utter_ask_for_age
+    - user: |
+        Mi edad es de [21]{"entity":"age"} años
+    - action: utter_antecedentes
+    - user: |
+        Sí, mi [abuelo](familiar) lo tuvo
+      intent: antecedente_si
+    - action: utter_gracias
+    - action: utter_goodbye
+
 - story: happy path 1
   steps:
   - user: |

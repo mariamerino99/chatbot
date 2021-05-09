@@ -23,3 +23,27 @@ stories:
     - action: utter_happy
     - action: utter_goodbye
 
+- story: dar_edad
+  steps:
+    - intent: provide_name
+    - action: utter_gracias
+    - action: utter_ask_for_age
+    - intent: provide_age
+    - action: utter_gracias
+    - action: utter_goodbye
+
+- story: post_dar_edad
+  steps:
+    - intent: provide_age
+    - action: utter_gracias
+    - action: utter_antecedentes
+    - intent: antecedente_si
+    - action: utter_gracias
+
+- story: otro_post_edad
+  steps:
+    - intent: provide_age
+    - action: utter_gracias
+    - action: utter_antecedentes
+    - intent: deny
+    - action: utter_goodbye

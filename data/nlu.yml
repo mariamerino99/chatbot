@@ -103,6 +103,7 @@ nlu:
     - Me llamo [Maria](name)
     - [Maria] (name)
     - Mi nombre es [Maria](name)
+    - Soy [Maria Merino](name)
 
 - intent: provide_age
   examples: |
@@ -110,3 +111,9 @@ nlu:
     - [21](age)
     - [21](age) años
     - Mi edad es [21]
+
+- intent: antecedente_si
+  examples: |
+    - Mi [abuelo](familiar) tuvo
+    - Sí, se que mi [abuelo](familiar) padece de Alzheimer
+    - Puede ser que un [abuelo](familiar) mío tuviese

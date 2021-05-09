@@ -8,6 +8,7 @@ intents:
   - bot_challenge
   - provide_name
   - provide_age
+  - antecedente_si
 
 actions:
   - utter_greet
@@ -19,16 +20,44 @@ actions:
   - utter_iamabot
   - utter_gracias
   - utter_ask_for_age
+  - utter_antecedentes
 
 entities:
   - name
   - age
+  - familiar
+
+forms:
+  personal_form:
+    required_slots:
+      name:
+        -type: from_entity
+         entity: name
+      age:
+        -type: from_entity
+         entity: age
+      antecedentes:
+        - type: from_intent
+          intent: antecedente_si
+          value: true
+        - type: from_intent
+          intent: deny
+          value: false
 
 slots:
   name:
     type: text
+    auto_fill: false
+    influence_conversation: false
   age:
     type: float
+    auto_fill: false
+    influence_conversation: false
+  antecedentes:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+
 
 responses:
   utter_greet:
@@ -60,6 +89,17 @@ responses:
   utter_ask_for_age:
     - text: "Podría decirme su edad"
 
+  utter_antecedentes:
+    - text: "¿Sabe si ha habido algún caso de Alzheimer en un familiar cercano?"
+    - text: "¿Conoce algún familiar cercano con Alzheimer?"
+  utter_submit:
+    -text: "Todo bien!"
+
+  utter_slots_values:
+    - text: "por favor, confirma que los datos son correctos: \n
+               - name: {name}\n
+               - age: {age}\n
+               - antecedentes: {antecedentes}"
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
