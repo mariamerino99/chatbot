@@ -21,21 +21,26 @@ actions:
   - utter_gracias
   - utter_ask_for_age
   - utter_antecedentes
+  - validate_personal_form
+  - validate_name
+  - validate_age
+  - validate_antecedentes
 
 entities:
   - name
   - age
   - familiar
+  - antecedentes
 
 forms:
   personal_form:
     required_slots:
       name:
-        -type: from_entity
-         entity: name
+        - type: from_entity
+          entity: name
       age:
-        -type: from_entity
-         entity: age
+        - type: from_entity
+          entity: age
       antecedentes:
         - type: from_intent
           intent: antecedente_si
@@ -61,39 +66,40 @@ slots:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Hey! How are you?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Here is something to cheer you up:"
+      image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Bye"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "I am a bot, powered by Rasa."
 
-  utter_ask_for_name:
+  utter_ask_name:
     - text: "Antes de empezar me gustaría preguntarle su nombre"
     - text: "Podría decirme su nombre"
 
   utter_gracias:
     - text: "Muchas gracias"
 
-  utter_ask_for_age:
+  utter_ask_age:
     - text: "Podría decirme su edad"
 
-  utter_antecedentes:
-    - text: "¿Sabe si ha habido algún caso de Alzheimer en un familiar cercano?"
+  utter_ask_antecedentes:
+    - text: "¿Sabe si ha habido casos de Alzheimer en un familiar cercano?"
     - text: "¿Conoce algún familiar cercano con Alzheimer?"
   utter_submit:
-    -text: "Todo bien!"
+    - text: "Todo bien!"
+    - text: "Perfecto, ¡muchas gracias!"
 
   utter_slots_values:
     - text: "por favor, confirma que los datos son correctos: \n
