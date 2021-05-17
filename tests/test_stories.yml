@@ -3,38 +3,26 @@
 
 stories:
 
-- story: Ask for name
-  steps:
-    - user: |
-        hola
-      intent: greet
-    - action: utter_ask_for_name
-    - user: |
-        Me llamo [Maria]{"entity":"name"}
-      intent: provide_name
-    - action: utter_gracias
-    - action: utter_ask_for_age
-    - user: |
-        Tengo [21]{"entity":"age"} años
-    - action: utter_goodbye
-
 - story: Ask for name and age and antecedents no
   steps:
     - user: |
         buenos días
       intent: greet
-    - action: utter_ask_for_name
+    - action: utter_ask_name
     - user: |
         Soy [Maria]{"entity":"name"}
       intent: provide_name
-    - action: utter_ask_for_age
+    - action: utter_ask_age
     - user: |
         Mi edad es de [21]{"entity":"age"} años
-    - action: utter_antecedentes
+      intent: provide_age
+    - action: utter_ask_antecedentes
     - user: |
         No, la verdad que nadie de mi familia lo ha tenido
       intent: deny
-    - action: utter_gracias
+      entities:
+        - antecedentes: false
+    - action: set_antecedentes_no
     - action: utter_goodbye
 
 - story: Ask for name and age and antecedents sí
@@ -42,19 +30,30 @@ stories:
     - user: |
         buenos días
       intent: greet
-    - action: utter_ask_for_name
+    - action: utter_ask_name
     - user: |
         Soy [Maria]{"entity":"name"}
       intent: provide_name
-    - action: utter_ask_for_age
+    - action: utter_ask_age
     - user: |
         Mi edad es de [21]{"entity":"age"} años
-    - action: utter_antecedentes
+      intent: provide_age
+    - action: utter_ask_antecedentes
     - user: |
         Sí, mi [abuelo](familiar) lo tuvo
       intent: antecedente_si
+      entities:
+        - antecedentes: true
+    - action: set_antecedentes_si
     - action: utter_gracias
     - action: utter_goodbye
+
+- story: Ask for antecedentes after age
+  steps:
+    - user: |
+        Tengo 50 años
+      intent: provide_age
+    - action: utter_ask_antecedentes
 
 - story: happy path 1
   steps:
@@ -81,7 +80,6 @@ stories:
       bye-bye!
     intent: goodbye
   - action: utter_goodbye
-
 - story: sad path 1
   steps:
   - user: |

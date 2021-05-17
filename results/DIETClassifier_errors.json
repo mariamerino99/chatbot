@@ -1,0 +1,16 @@
+[
+  {
+    "text": "[Maria Merino] (name)",
+    "entities": [],
+    "predicted_entities": [
+      {
+        "entity": "name",
+        "start": 1,
+        "end": 6,
+        "confidence_entity": 0.5442306995391846,
+        "value": "Maria",
+        "extractor": "DIETClassifier"
+      }
+    ]
+  }
+]

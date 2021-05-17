@@ -1,49 +1,119 @@
 version: "2.0"
 
 stories:
+## pregunta definiciones
+- story: preg_definiciones
+  steps:
+    - intent: preg_defs
+    - action: utter_definiciones1
+    - intent: definiciones1
+    - action: set_resultado_defs
+    - action: utter_definiciones2
+    - intent: definiciones2
+    - action: set_resultado_defs
+    - action: utter_definiciones3
+    - intent: definiciones3
+    - action: set_resultado_defs
+    - action: utter_definiciones4
+    - intent: definiciones4
+    - action: set_resultado_defs
+    - action: utter_definiciones5
+    - intent: definiciones5
+    - action: set_resultado_defs
+
+- story: preg_definiciones_mal
+  steps:
+    - intent: preg_defs
+    - action: utter_definiciones1
+    - intent: dudas
+    - action: utter_definiciones2
+    - intent: dudas
+    - action: utter_definiciones3
+    - intent: dudas
+    - action: set_resultado_defs
+    - action: utter_definiciones4
+    - intent: dudas
+    - action: utter_definiciones5
+    - intent: dudas
+
+
 
 ## datos personales
 - story: datos_personales
   steps:
     - intent: greet
-    - action: utter_ask_for_name
+    - action: utter_greet
+    - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias
-    - action: utter_ask_for_age
+    - action: utter_ask_age
     - intent: provide_age
     - action: utter_gracias
-    - action: utter_goodbye
+    - action: utter_ask_antecedentes
+    - intent: antecedentes_si
+    - action: set_antecedentes_no
+    - action: probabilidad_inicial
 
-- story: nombre_2_pasos
+  ## datos personales antecedentes no
+- story: datos_personales
   steps:
     - intent: greet
     - action: utter_greet
-    - action: utter_ask_for_name
-    - intent: provide_name
-    - action: utter_happy
-    - action: utter_goodbye
-
-- story: dar_edad
-  steps:
+    - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias
-    - action: utter_ask_for_age
+    - action: utter_ask_age
     - intent: provide_age
     - action: utter_gracias
-    - action: utter_goodbye
+    - action: utter_ask_antecedentes
+    - intent: antecedentes_si
+    - action: set_antecedentes_si
+    - action: probabilidad_inicial
 
-- story: post_dar_edad
+- story: interactive_story_1
   steps:
+    - intent: greet
+    - action: utter_greet
+    - action: utter_ask_name
+    - intent: provide_name
+      entities:
+        - name: 'Maria Merino'
+    - slot_was_set:
+        - name: Maria Merino
+    - action: utter_gracias
+    - action: utter_ask_age
     - intent: provide_age
+      entities:
+        - age: '21'
+    - slot_was_set:
+        - age: '21'
     - action: utter_gracias
-    - action: utter_antecedentes
-    - intent: antecedente_si
-    - action: utter_gracias
+    - action: utter_ask_antecedentes
+    - intent: antecedentes_si
+    - action: set_antecedentes_si
+    - action: probabilidad_inicial
 
-- story: otro_post_edad
+- story: interactive_story_1
   steps:
-    - intent: provide_age
-    - action: utter_gracias
-    - action: utter_antecedentes
-    - intent: deny
-    - action: utter_goodbye
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+  - intent: provide_name
+    entities:
+    - name: Maria Merino
+  - slot_was_set:
+    - name: Maria Merino
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+    entities:
+    - age: '21'
+  - slot_was_set:
+    - age: '21'
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: deny
+  - action: set_antecedentes_no
+  - action: probabilidad_inicial
+
+

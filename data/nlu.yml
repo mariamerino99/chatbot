@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -15,12 +14,10 @@ nlu:
     - hey dude
     - goodmorning
     - goodevening
-    - good afternoon
     - hola
     - buenos días
     - buenos dias
     - buenas
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -34,7 +31,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -45,7 +41,6 @@ nlu:
     - correct
     - sí
     - claro
-
 - intent: deny
   examples: |
     - no
@@ -55,7 +50,9 @@ nlu:
     - don't like that
     - no way
     - not really
-
+    - no creo
+    - creo que no
+    - Creo que no
 - intent: mood_great
   examples: |
     - perfect
@@ -72,7 +69,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -89,7 +85,6 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -97,23 +92,67 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
     - ¿Quien eres?
-
 - intent: provide_name
   examples: |
-    - Me llamo [Maria](name)
-    - [Maria] (name)
-    - Mi nombre es [Maria](name)
+    - Me llamo [Maria Merino](name)
+    - [Maria Merino] (name)
+    - Mi nombre es [Maria Merino](name)
     - Soy [Maria Merino](name)
-
+    - [Maria Merino](name)
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
     - [21](age)
     - [21](age) años
     - Mi edad es [21]
-
-- intent: antecedente_si
+    - tengo [21](age) años
+- intent: antecedentes_si
   examples: |
     - Mi [abuelo](familiar) tuvo
     - Sí, se que mi [abuelo](familiar) padece de Alzheimer
-    - Puede ser que un [abuelo](familiar) mío tuviese
+    - Puede ser que un [abuelo](familiar) mío lo tuviese
+    - Si
+- intent: check_data
+  examples: |
+    - Check data
+    - Comprobar los datos
+
+- intent: check_prob_inicial
+  examples: |
+    - Check prob inicial
+    - Comprobar la probabilidad inicial
+
+- intent: check_preg_defs
+  examples: |
+    - Check preg defs
+    - Comprobar pref defs
+
+- intent: dudas
+  examples: |
+    - No lo sé
+    - No se
+    - Y yo que se
+    - A saber
+
+- intent: definiciones1
+  examples: |
+    - Un espejo
+- intent: definiciones2
+  examples: |
+    - La almohada
+    - Un cojín
+- intent: definiciones3
+  examples: |
+    - La Farmacia
+- intent: definiciones4
+  examples: |
+    - La miel
+- intent: definiciones5
+  examples: |
+    - La nevera
+    - El congelador
+- intent: preg_defs
+  examples: |
+    - Hacer preg defs
+
+

@@ -1,0 +1,10 @@
+[
+  {
+    "text": "Me gustaría hacer el form",
+    "intent": "hacer_form",
+    "intent_prediction": {
+      "name": "antecedente_si",
+      "confidence": 0.468610942363739
+    }
+  }
+]

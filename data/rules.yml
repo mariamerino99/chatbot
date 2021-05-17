@@ -1,20 +1,25 @@
 version: "2.0"
 
 rules:
-- rule: activate personal form
+- rule: checck data
   steps:
-     - intent: greet
-     - action: personal_form
-     - active_loop: personal_form
+    - intent: check_data
+    - action: utter_slots_values
 
-- rule: submit form
-  condition:
-  - active_loop: personal_form
+- rule: check prob inicial
   steps:
-       - action: personal_form
-       - active_loop: null
-       - action: utter_submit
-       - action: utter_slots_values
+    - intent: check_prob_inicial
+    - action: probabilidad_inicial
+
+- rule: check preg defs
+  steps:
+    - intent: check_preg_defs
+    - action: utter_preg_defs
+
+- rule: hacer preg definiciones
+  steps:
+    - intent: preg_defs
+    - action: utter_definiciones1
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

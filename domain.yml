@@ -1,111 +1,131 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - provide_name
-  - provide_age
-  - antecedente_si
+- greet
+- provide_name
+- deny
+- provide_age
+- goodbye
+- affirm
+- mood_great
+- mood_unhappy
+- bot_challenge
+- antecedentes_si
+- check_data
+- check_prob_inicial
+- preg_defs
+- check_preg_defs
+- definiciones1
+- definiciones2
+- definiciones3
+- definiciones4
+- definiciones5
+- dudas
 
-actions:
-  - utter_greet
-  - utter_cheer_up
-  - utter_did_that_help
-  - utter_happy
-  - utter_ask_for_name
-  - utter_goodbye
-  - utter_iamabot
-  - utter_gracias
-  - utter_ask_for_age
-  - utter_antecedentes
-  - validate_personal_form
-  - validate_name
-  - validate_age
-  - validate_antecedentes
 
 entities:
-  - name
-  - age
-  - familiar
-  - antecedentes
-
-forms:
-  personal_form:
-    required_slots:
-      name:
-        - type: from_entity
-          entity: name
-      age:
-        - type: from_entity
-          entity: age
-      antecedentes:
-        - type: from_intent
-          intent: antecedente_si
-          value: true
-        - type: from_intent
-          intent: deny
-          value: false
+- age
+- antecedentes
+- familiar
+- name
 
 slots:
   name:
     type: text
-    auto_fill: false
     influence_conversation: false
   age:
     type: float
-    auto_fill: false
-    influence_conversation: false
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   antecedentes:
     type: text
-    auto_fill: false
-    influence_conversation: false
-
+    influence_conversation: true
+  prob:
+    type: float
+    influence_conversation: true
+  res_def:
+    type: float
+    initial_value: 0
+  preg_def:
+    type: text
 
 responses:
   utter_greet:
-    - text: "Hey! How are you?"
-
+  - text: Hey! How are you?
   utter_cheer_up:
-    - text: "Here is something to cheer you up:"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
-
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
-    - text: "Did that help you?"
-
+  - text: Did that help you?
   utter_happy:
-    - text: "Great, carry on!"
-
+  - text: Great, carry on!
   utter_goodbye:
-    - text: "Bye"
-
+  - text: Bye
   utter_iamabot:
-    - text: "I am a bot, powered by Rasa."
-
+  - text: I am a bot, powered by Rasa.
   utter_ask_name:
-    - text: "Antes de empezar me gustaría preguntarle su nombre"
-    - text: "Podría decirme su nombre"
-
+  - text: Antes de empezar me gustaría preguntarle su nombre
+  - text: Podría decirme su nombre
   utter_gracias:
-    - text: "Muchas gracias"
-
+  - text: Muchas gracias
   utter_ask_age:
-    - text: "Podría decirme su edad"
-
+  - text: Podría decirme su edad
   utter_ask_antecedentes:
-    - text: "¿Sabe si ha habido casos de Alzheimer en un familiar cercano?"
-    - text: "¿Conoce algún familiar cercano con Alzheimer?"
+  - text: ¿Sabe si ha habido casos de Alzheimer en un familiar cercano?
+  - text: ¿Conoce algún familiar cercano con Alzheimer?
   utter_submit:
-    - text: "Todo bien!"
-    - text: "Perfecto, ¡muchas gracias!"
-
+  - text: Todo bien!
+  - text: Perfecto, ¡muchas gracias!
   utter_slots_values:
-    - text: "por favor, confirma que los datos son correctos: \n
-               - name: {name}\n
-               - age: {age}\n
-               - antecedentes: {antecedentes}"
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  - text: |-
+      por favor, confirma que los datos son correctos: 
+       - name: {name}
+       - age: {age}
+       - antecedentes: {antecedentes}
+  utter_preg_defs:
+    - text: |-
+        Resultado de preg defs
+         - res_def: {res_def}
+
+  utter_inicio:
+  - text: ''
+  utter_definiciones1:
+    - text: ¿Dónde se mira uno si quiere verse a si mismo?
+
+  utter_definiciones2:
+    - text: ¿Dónde se apoya la cabeza en la cama?
+
+  utter_definiciones3:
+    - text: ¿Dónde se compran los medicamentos?
+
+  utter_definiciones4:
+    - text: ¿Qué alimento producen las abejas?
+
+  utter_definiciones5:
+    - text: ¿Dónde se conservan fríos los alimentos?
+
+actions:
+- utter_ask_age
+- utter_ask_antecedentes
+- utter_ask_name
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_gracias
+- utter_greet
+- utter_happy
+- utter_iamabot
+- validate_age
+- validate_antecedentes
+- validate_name
+- validate_personal_form
+- probabilidad_inicial
+- set_antecedentes_si
+- set_antecedentes_no
+- set_resultado_defs
+- utter_preg_defs
+
+

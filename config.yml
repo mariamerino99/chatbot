@@ -17,12 +17,6 @@ pipeline:
     threshold: 0.4
     ambiguity_threshold: 0.1
   - name: "EntitySynonymMapper"
-  - name: "DucklingEntityExtractor"
-    url: "http://localhost:8000"
-    dimensions: [ "age", "name", "antecedentes" ]
-    locale: "de_DE"
-    timezone: "Europe/Spain"
-    timeout: 3
 
 
 policies:
