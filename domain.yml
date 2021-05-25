@@ -3,34 +3,40 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- propios3
+- propios1
+- preg_propios
+- propios4
+- propios2
+- nlu_fallback
+- definiciones5
+- definiciones2
+- preg_defs
 - greet
+- antecedentes_si
 - provide_name
-- deny
 - provide_age
+- hacer_preg2
+- definiciones3
+- deny
 - goodbye
 - affirm
 - mood_great
 - mood_unhappy
 - bot_challenge
-- antecedentes_si
 - check_data
 - check_prob_inicial
-- preg_defs
 - check_preg_defs
 - definiciones1
-- definiciones2
-- definiciones3
 - definiciones4
-- definiciones5
 - dudas
-
-
+- lista_frutas
+- propios5
 entities:
 - age
 - antecedentes
 - familiar
 - name
-
 slots:
   name:
     type: text
@@ -46,12 +52,23 @@ slots:
   prob:
     type: float
     influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   res_def:
     type: float
     initial_value: 0
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+  res_propios:
+    type: float
+    initial_value: 0
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   preg_def:
     type: text
-
+    influence_conversation: true
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -86,46 +103,63 @@ responses:
        - age: {age}
        - antecedentes: {antecedentes}
   utter_preg_defs:
-    - text: |-
-        Resultado de preg defs
-         - res_def: {res_def}
-
+  - text: |-
+      Resultado de preg defs
+       - res_def: {res_def}
   utter_inicio:
-  - text: ''
+  - text: ¡Hola! Soy un bot y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos.
   utter_definiciones1:
-    - text: ¿Dónde se mira uno si quiere verse a si mismo?
-
+  - text: ¿Dónde se mira uno si quiere verse a si mismo?
   utter_definiciones2:
-    - text: ¿Dónde se apoya la cabeza en la cama?
-
+  - text: ¿Dónde se apoya la cabeza en la cama?
   utter_definiciones3:
-    - text: ¿Dónde se compran los medicamentos?
-
+  - text: ¿Dónde se compran los medicamentos?
   utter_definiciones4:
-    - text: ¿Qué alimento producen las abejas?
-
+  - text: ¿Qué alimento producen las abejas?
   utter_definiciones5:
-    - text: ¿Dónde se conservan fríos los alimentos?
-
+  - text: ¿Dónde se conservan fríos los alimentos?
+  utter_preg2:
+  - text: Debe listar el mayor número de frutas que pueda en 30 segundos. Le avisaremos cuando acabe el tiempo.
+  utter_propios1:
+  - text: ¿Cómo se llama el actual presidente del gobierno de España?
+  utter_propios2:
+  - text: ¿Quién es el rey de España actual?
+  utter_propios3:
+  - text: ¿Cómo se llama el Papa actual?
+  utter_propios4:
+  - text: ¿Quién es el presidente del Real Madrid?
+  utter_propios5:
+  - text: ¿Cómo se llama la Reina de Inglaterra?
 actions:
+- action_react_to_reminder
+- action_set_reminder
+- probabilidad_inicial
+- set_antecedentes_no
+- set_antecedentes_si
+- set_resultado_defs
+- set_resultado_propios
 - utter_ask_age
 - utter_ask_antecedentes
 - utter_ask_name
 - utter_cheer_up
+- utter_definiciones1
+- utter_definiciones2
+- utter_definiciones3
+- utter_definiciones5
 - utter_did_that_help
 - utter_goodbye
 - utter_gracias
 - utter_greet
 - utter_happy
 - utter_iamabot
+- utter_preg2
+- utter_preg_defs
+- utter_propios1
+- utter_propios2
+- utter_propios3
+- utter_propios4
+- utter_propios5
 - validate_age
 - validate_antecedentes
 - validate_name
 - validate_personal_form
-- probabilidad_inicial
-- set_antecedentes_si
-- set_antecedentes_no
-- set_resultado_defs
-- utter_preg_defs
-
-

@@ -26,10 +26,11 @@ from rasa_sdk.executor import CollectingDispatcher
 #
 #         return []
 
-
+import datetime
 from typing import Text, List, Optional, Union
 from rasa_sdk.forms import FormAction
 from rasa_sdk.forms import FormValidationAction
+from rasa_sdk.events import ReminderScheduled, ReminderCancelled
 
 
 from rasa_sdk import Tracker, FormValidationAction
@@ -43,7 +44,7 @@ class SetAntecedentesSi(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        return [[SlotSet("antecedentes", "si")]]
+        return [SlotSet("antecedentes", "si")]
 
 class SetAntecedentesNo(Action):
     # return the name of the action
@@ -63,10 +64,22 @@ class SetResultadoDefs(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        res = tracker.get("res_def")
-        res += 1
+        res = tracker.slots.get("res_def")
+        resultado = (int(res)+1)
+        print(resultado)
+        return [SlotSet("res_def", resultado)]
 
-        return [SlotSet("res_def", res)]
+class SetResultadoPropios(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "set_resultado_propios"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        res = tracker.slots.get("res_propios")
+        resultado = (int(res)+1)
+        print(resultado)
+        return [SlotSet("res_propios", resultado)]
 
 class ProbabilidadInicial(Action):
     # return the name of the action
@@ -108,7 +121,50 @@ class ProbabilidadInicial(Action):
         print(prob)
         return [SlotSet("prob", prob)]
 
+class ActionSetReminder(Action):
+    """Schedules a reminder, supplied with the last message's entities."""
 
+    def name(self) -> Text:
+        return "action_set_reminder"
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message("Tiempo puesto")
+        print("Tiempo puesto")
+
+        date = datetime.datetime.now() + datetime.timedelta(seconds=30)
+
+        reminder = ReminderScheduled(
+            "hacer_preg2",
+            trigger_date_time=date,
+            name="my_reminder",
+            kill_on_user_message=False,
+        )
+
+        return [reminder]
+
+class ActionReactToReminder(Action):
+    """Reminds the user to call someone."""
+
+    def name(self) -> Text:
+        return "action_react_to_reminder"
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+
+        dispatcher.utter_message(f"Tiempo!")
+
+        return []
 
 
 

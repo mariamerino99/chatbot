@@ -112,28 +112,25 @@ nlu:
     - Sí, se que mi [abuelo](familiar) padece de Alzheimer
     - Puede ser que un [abuelo](familiar) mío lo tuviese
     - Si
+    - Sí, mi [abuelo](familiar) tuvo Alzheimer
 - intent: check_data
   examples: |
     - Check data
     - Comprobar los datos
-
 - intent: check_prob_inicial
   examples: |
     - Check prob inicial
     - Comprobar la probabilidad inicial
-
 - intent: check_preg_defs
   examples: |
     - Check preg defs
     - Comprobar pref defs
-
 - intent: dudas
   examples: |
     - No lo sé
     - No se
     - Y yo que se
     - A saber
-
 - intent: definiciones1
   examples: |
     - Un espejo
@@ -141,9 +138,11 @@ nlu:
   examples: |
     - La almohada
     - Un cojín
+    - Una almohada
 - intent: definiciones3
   examples: |
     - La Farmacia
+    - una farmacia
 - intent: definiciones4
   examples: |
     - La miel
@@ -151,8 +150,51 @@ nlu:
   examples: |
     - La nevera
     - El congelador
+    - una nevera
 - intent: preg_defs
   examples: |
     - Hacer preg defs
-
-
+    - hacer preg defs
+- intent: preg_propios
+  examples: |
+    - Pregunta nombres propios
+    - hacer preg propios
+    - pregunta con tiempo
+- intent: hacer_preg2
+  examples: |
+    - pregunta con timer
+    - EXTERNAL: hacer_preg2
+- intent: lista_frutas
+  examples: |
+    - [manzana](fruta)
+    - [pera](fruta)
+    - [plátano](fruta)
+- intent: nlu_fallback
+  examples: |
+    - un sofa
+    - Isable segunda
+- intent: propios1
+  examples: |
+    - Pedro Sánchez
+    - Pedro Sanchez
+- intent: propios2
+  examples: |
+    - Felipe Borbón
+    - Felipe sexto
+    - Felipe VI
+- intent: propios3
+  examples: |
+    - Francisco primero
+    - Francisco
+    - Francisco I
+- intent: propios4
+  examples: |
+    - Florentino Pérez
+    - Florentino
+    - Florentino Perez
+- intent: propios5
+  examples: |
+    - Isabel segunda
+    - Isabel
+    - Elizabeth
+    - Elizabeth the second

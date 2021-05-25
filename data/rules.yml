@@ -21,6 +21,12 @@ rules:
     - intent: preg_defs
     - action: utter_definiciones1
 
+- rule: hacer preg propios
+  steps:
+    - intent: preg_propios
+    - action: utter_propios1
+
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
