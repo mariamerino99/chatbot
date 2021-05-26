@@ -96,29 +96,25 @@ class ProbabilidadInicial(Action):
         prob = 2
 
         # sanity check to ensure that it was filled by rasa
-        if name:
-            dispatcher.utter_message("Hemos llegado hasta NOMBRE", name)
-        if ages:
-            dispatcher.utter_message("Hemos llegado hasta EDAD", ages)
-        if antecedentes:
-            dispatcher.utter_message("Hemos llegado hasta ANTEC", antecedentes)
+        if name and ages and antecedentes:
+            age = int(ages)
+            if age < 65 and antecedentes:
+                prob = 0
+            elif (age > 65 and age < 75):
+                if antecedentes == "no":
+                    prob = 1
+                elif antecedentes == "si":
+                    prob = 2
+            elif age > 75:
+                if antecedentes == "no":
+                    prob = 2
+                elif antecedentes == "si":
+                    prob = 3
+            # dispatcher.utter_message("Hemos llegado hasta NOMBRE", name)
+        else:
+            prob=2
 
-        age = int(ages)
-        if(age < 65 and antecedentes):
-            prob = 0
-        elif(age > 65 and age < 75 ):
-            if(antecedentes == "no"):
-                prob = 1
-            elif(antecedentes == "si"):
-                prob = 2
-        elif (age > 75 ):
-            if antecedentes == "no":
-                prob = 2
-            elif antecedentes == "si":
-                prob = 3
-
-
-        print(prob)
+        print("PROB",prob)
         return [SlotSet("prob", prob)]
 
 class ActionSetReminder(Action):

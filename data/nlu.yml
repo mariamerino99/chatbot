@@ -41,6 +41,7 @@ nlu:
     - correct
     - sí
     - claro
+    - Sí
 - intent: deny
   examples: |
     - no
@@ -99,6 +100,7 @@ nlu:
     - Mi nombre es [Maria Merino](name)
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
+    - Me llamo [Pedro Sanchez](name)
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
@@ -106,6 +108,7 @@ nlu:
     - [21](age) años
     - Mi edad es [21]
     - tengo [21](age) años
+    - Tengo [67](age) años
 - intent: antecedentes_si
   examples: |
     - Mi [abuelo](familiar) tuvo

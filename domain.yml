@@ -3,6 +3,12 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- provide_age
+- provide_name
+- affirm
+- definiciones1
+- greet
+- definiciones2
 - propios3
 - propios1
 - preg_propios
@@ -10,24 +16,18 @@ intents:
 - propios2
 - nlu_fallback
 - definiciones5
-- definiciones2
 - preg_defs
-- greet
 - antecedentes_si
-- provide_name
-- provide_age
 - hacer_preg2
 - definiciones3
 - deny
 - goodbye
-- affirm
 - mood_great
 - mood_unhappy
 - bot_challenge
 - check_data
 - check_prob_inicial
 - check_preg_defs
-- definiciones1
 - definiciones4
 - dudas
 - lista_frutas
@@ -130,6 +130,10 @@ responses:
   - text: ¿Quién es el presidente del Real Madrid?
   utter_propios5:
   - text: ¿Cómo se llama la Reina de Inglaterra?
+  utter_enunciado_test:
+  - text: ¡Perfecto! Ya tengo todos los datos necesarios. A continuación, vamos a realizar un test mini-mental. Deberá contestar a las preguntas propuestas. Si no conoce las respuestas puede decir "no lo se" o "siguiente" para pasar a la siguiente pregunta.
+  utter_enunciado_definiciones:
+  - text: Esta pregunta consiste en identificar palabras a través de sus definiciones. Yo le proporcionaré la definición y tendrá que decir a qué objeto se refiere. ¡Comencemos!
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -147,6 +151,8 @@ actions:
 - utter_definiciones3
 - utter_definiciones5
 - utter_did_that_help
+- utter_enunciado_definiciones
+- utter_enunciado_test
 - utter_goodbye
 - utter_gracias
 - utter_greet

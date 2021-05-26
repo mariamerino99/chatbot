@@ -74,7 +74,7 @@ stories:
 - story: pregunta frutas
   steps:
     - action: action_set_reminder
-    - action: listen
+    - action: action_listen
     - intent: lista_frutas
     - action: action_react_to_reminder
 
@@ -95,6 +95,9 @@ stories:
         - intent: antecedentes_si
     - action: set_antecedentes_si
     - action: probabilidad_inicial
+    - action: utter_enunciado_test
+    - action: utter_enunciado_definiciones
+    - action: utter_definiciones1
 
   ## datos personales antecedentes no
 - story: datos_personales
@@ -111,6 +114,9 @@ stories:
     - intent: antecedentes_si
     - action: set_antecedentes_si
     - action: probabilidad_inicial
+    - action: utter_enunciado_test
+    - action: utter_enunciado_definiciones
+    - action: utter_definiciones1
 
 - story: interactive_story_1
   steps:
@@ -244,3 +250,43 @@ stories:
     - res_propios: 4
   - action: utter_propios5
   - intent: nlu_fallback
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+  - intent: provide_name
+    entities:
+    - name: Pedro Sanchez
+  - slot_was_set:
+    - name: Pedro Sanchez
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+    entities:
+    - age: '67'
+  - slot_was_set:
+    - age: '67'
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: affirm
+  - action: set_antecedentes_si
+  - slot_was_set:
+    - antecedentes: si
+  - action: probabilidad_inicial
+  - slot_was_set:
+    - prob: 2
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
+  - intent: definiciones1
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 1
+  - action: utter_definiciones2
+  - intent: definiciones2
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 2
+  - action: utter_definiciones3
