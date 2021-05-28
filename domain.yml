@@ -134,6 +134,11 @@ responses:
   - text: ¡Perfecto! Ya tengo todos los datos necesarios. A continuación, vamos a realizar un test mini-mental. Deberá contestar a las preguntas propuestas. Si no conoce las respuestas puede decir "no lo se" o "siguiente" para pasar a la siguiente pregunta.
   utter_enunciado_definiciones:
   - text: Esta pregunta consiste en identificar palabras a través de sus definiciones. Yo le proporcionaré la definición y tendrá que decir a qué objeto se refiere. ¡Comencemos!
+  utter_enunciado_propios:
+    - text: Esta pregunta consiste en identificar nombres propios de personas conocidas. Se proporcionará una descripción se espera el nombre de la persona correspondiente. Vamos a empezar
+  utter_fin_pregunta:
+    - text: ¡Perfecto! Hemos finalizado esta pregunta. Procedemos con la siguiente.
+
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -169,3 +174,5 @@ actions:
 - validate_antecedentes
 - validate_name
 - validate_personal_form
+- utter_enunciado_propios
+- utter_fin_pregunta

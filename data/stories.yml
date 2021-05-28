@@ -20,6 +20,9 @@ stories:
     - action: utter_definiciones5
     - intent: definiciones5
     - action: set_resultado_defs
+    - action: utter_fin_pregunta
+    - action: utter_enunciado_propios
+    - action: utter_propios1
 
 - story: preg_definiciones_mal
   steps:
@@ -34,6 +37,9 @@ stories:
     - intent: dudas
     - action: utter_definiciones5
     - intent: dudas
+    - action: utter_fin_pregunta
+    - action: utter_enunciado_propios
+    - action: utter_propios1
 
   ## pregunta nombres propios
 - story: preg_definiciones
@@ -54,6 +60,7 @@ stories:
     - action: utter_propios5
     - intent: propios5
     - action: set_resultado_propios
+    - action: utter_fin_pregunta
 
 - story: preg_propios_mal
   steps:
@@ -68,6 +75,7 @@ stories:
     - intent: dudas
     - action: utter_propios5
     - intent: dudas
+    - action: utter_fin_preguntas
 
 
 ## pregunta frutas
