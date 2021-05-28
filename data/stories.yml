@@ -1,6 +1,16 @@
 version: "2.0"
 
 stories:
+
+## pregunta lista inmediata
+- story: preg_lista_inmediata
+  steps:
+    - intent: lista_inmediata
+    - action: utter_pregunta_lista
+    - action: utter_ask_lista
+    - intent: recibir_lista_inmediata
+    - action: set_resultado_lista
+
 ## pregunta definiciones
 - story: preg_definiciones
   steps:
@@ -75,7 +85,7 @@ stories:
     - intent: dudas
     - action: utter_propios5
     - intent: dudas
-    - action: utter_fin_preguntas
+    - action: utter_fin_pregunta
 
 
 ## pregunta frutas
@@ -89,8 +99,7 @@ stories:
 ## datos personales
 - story: datos_personales
   steps:
-    - intent: greet
-    - action: utter_greet
+    - action: action_session_start
     - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias
@@ -110,8 +119,7 @@ stories:
   ## datos personales antecedentes no
 - story: datos_personales
   steps:
-    - intent: greet
-    - action: utter_greet
+    - action: action_session_start
     - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias

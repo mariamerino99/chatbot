@@ -201,3 +201,10 @@ nlu:
     - Isabel
     - Elizabeth
     - Elizabeth the second
+- intent: recibir_lista_inmediata
+  examples: |
+    - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
+
+- intent: lista_inmediata
+  examples: |
+     - Lista de la compra
