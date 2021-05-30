@@ -1,0 +1,14 @@
+[
+  {
+    "text": "Sí, mi abuelo lo tuvo",
+    "entities": [
+      {
+        "start": 7,
+        "end": 13,
+        "value": "abuelo",
+        "entity": "familiar"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
