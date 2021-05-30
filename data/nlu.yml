@@ -54,6 +54,7 @@ nlu:
     - no creo
     - creo que no
     - Creo que no
+    - No
 - intent: mood_great
   examples: |
     - perfect
@@ -158,6 +159,7 @@ nlu:
   examples: |
     - Hacer preg defs
     - hacer preg defs
+    - hacer pregunta definiciones
 - intent: preg_propios
   examples: |
     - Pregunta nombres propios
@@ -204,7 +206,6 @@ nlu:
 - intent: recibir_lista_inmediata
   examples: |
     - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
-
 - intent: lista_inmediata
   examples: |
-     - Lista de la compra
+    - Lista de la compra
