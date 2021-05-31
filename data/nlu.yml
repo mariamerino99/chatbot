@@ -54,6 +54,7 @@ nlu:
     - no creo
     - creo que no
     - Creo que no
+    - No
 - intent: mood_great
   examples: |
     - perfect
@@ -101,6 +102,7 @@ nlu:
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
     - Me llamo [Pedro Sanchez](name)
+    - María
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
@@ -134,14 +136,18 @@ nlu:
     - No se
     - Y yo que se
     - A saber
+    - siguiente
+    - no lo se
 - intent: definiciones1
   examples: |
     - Un espejo
+    - un espejo
 - intent: definiciones2
   examples: |
     - La almohada
     - Un cojín
     - Una almohada
+    - una almohada
 - intent: definiciones3
   examples: |
     - La Farmacia
@@ -154,10 +160,13 @@ nlu:
     - La nevera
     - El congelador
     - una nevera
+    - Una nevera
+    - la nevera
 - intent: preg_defs
   examples: |
     - Hacer preg defs
     - hacer preg defs
+    - hacer pregunta definiciones
 - intent: preg_propios
   examples: |
     - Pregunta nombres propios
@@ -204,7 +213,6 @@ nlu:
 - intent: recibir_lista_inmediata
   examples: |
     - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
-
 - intent: lista_inmediata
   examples: |
-     - Lista de la compra
+    - Lista de la compra
