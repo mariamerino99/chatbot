@@ -102,6 +102,7 @@ nlu:
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
     - Me llamo [Pedro Sanchez](name)
+    - María
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
@@ -135,14 +136,18 @@ nlu:
     - No se
     - Y yo que se
     - A saber
+    - siguiente
+    - no lo se
 - intent: definiciones1
   examples: |
     - Un espejo
+    - un espejo
 - intent: definiciones2
   examples: |
     - La almohada
     - Un cojín
     - Una almohada
+    - una almohada
 - intent: definiciones3
   examples: |
     - La Farmacia
@@ -155,6 +160,8 @@ nlu:
     - La nevera
     - El congelador
     - una nevera
+    - Una nevera
+    - la nevera
 - intent: preg_defs
   examples: |
     - Hacer preg defs
