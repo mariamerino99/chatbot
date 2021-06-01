@@ -42,6 +42,7 @@ nlu:
     - sí
     - claro
     - Sí
+    - Si
 - intent: deny
   examples: |
     - no
@@ -116,7 +117,6 @@ nlu:
     - Mi [abuelo](familiar) tuvo
     - Sí, se que mi [abuelo](familiar) padece de Alzheimer
     - Puede ser que un [abuelo](familiar) mío lo tuviese
-    - Si
     - Sí, mi [abuelo](familiar) tuvo Alzheimer
 - intent: check_data
   examples: |
