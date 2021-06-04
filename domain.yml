@@ -3,11 +3,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- greet
 - provide_age
 - provide_name
 - affirm
 - definiciones1
-- greet
 - definiciones2
 - propios3
 - propios1
@@ -33,14 +33,22 @@ intents:
 - lista_frutas
 - propios5
 - lista_inmediata
+- objeto1
+- objeto2
+- objeto3
+- objeto4
+- objeto5
+- chatbot_bien
+- chatbot_mal
+- lista_despues
 - recibir_lista_inmediata
-
+- quien_soy
 entities:
 - age
 - antecedentes
 - familiar
-- name
 - lista_compra
+- name
 slots:
   name:
     type: text
@@ -48,58 +56,66 @@ slots:
   age:
     type: float
     influence_conversation: true
-    max_value: 1.0
-    min_value: 0.0
+
   antecedentes:
     type: text
     influence_conversation: true
   prob:
     type: float
     influence_conversation: true
-    max_value: 1.0
-    min_value: 0.0
+
   res_def:
     type: float
     initial_value: 0
     influence_conversation: true
+
   res_propios:
     type: float
     initial_value: 0
+    influence_conversation: true
+
   preg_def:
     type: text
     influence_conversation: true
   lista_compra:
     type: list
+    influence_conversation: true
   res_lista_inmediata:
+    type: float
+    initial_value: 0
+  res_lista_despues:
+    type: float
+    initial_value: 0
+  res_objetos:
     type: float
     initial_value: 0
 
 responses:
   utter_greet:
-  - text: Hey! How are you?
+  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos.
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
   - text: Did that help you?
   utter_happy:
-  - text: Great, carry on!
+  - text: ¡Genial!
   utter_goodbye:
-  - text: Bye
+  - text: Adiós
   utter_iamabot:
-  - text: I am a bot, powered by Rasa.
+  - text: Soy un bot, diseñado por Rasa
   utter_ask_name:
   - text: Antes de empezar me gustaría preguntarle su nombre
-  - text: Podría decirme su nombre
+  - text: ¿Podría decirme su nombre?
   utter_gracias:
   - text: Muchas gracias
   utter_ask_age:
-  - text: Podría decirme su edad
+  - text: ¿Podría decirme su edad?
   utter_ask_antecedentes:
-  - text: ¿Sabe si ha habido casos de Alzheimer en un familiar cercano?
-  - text: ¿Conoce algún familiar cercano con Alzheimer?
+  - text: ¿Ha habido casos de Alzheimer en un familiar cercano?
+  - text: Por último, me gustaría saber si ha habido casos de Alzheimer en su familia cercana
   utter_submit:
-  - text: Todo bien!
+  - text: ¡Todo bien!
   - text: Perfecto, ¡muchas gracias!
   utter_slots_values:
   - text: |-
@@ -111,7 +127,7 @@ responses:
   - text: |-
       Resultado de preg defs
        - res_def: {res_def}
-  action_session_start:
+  utter_bienvenida:
   - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos.
   utter_definiciones1:
   - text: ¿Dónde se mira uno si quiere verse a si mismo?
@@ -140,16 +156,34 @@ responses:
   utter_enunciado_definiciones:
   - text: Esta pregunta consiste en identificar palabras a través de sus definiciones. Yo le proporcionaré la definición y tendrá que decir a qué objeto se refiere. ¡Comencemos!
   utter_enunciado_propios:
-    - text: Esta pregunta consiste en identificar nombres propios de personas conocidas. Se proporcionará una descripción se espera el nombre de la persona correspondiente. Vamos a empezar
+  - text: Esta pregunta consiste en identificar nombres propios de personas conocidas. Se proporcionará una descripción se espera el nombre de la persona correspondiente. Vamos a empezar
   utter_fin_pregunta:
-    - text: ¡Perfecto! Hemos finalizado esta pregunta. Procedemos con la siguiente.
+  - text: ¡Perfecto! Hemos finalizado esta pregunta. Procedemos con la siguiente.
   utter_pregunta_lista:
-    - text: A continuación, le voy a proporcionar una lista de 10 objetos, y tendrá que memorizar el máximo número posible. A continueción, le preguntaré y tendrá que decir los que recuerda. La lista es la siguiente \n
-        Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta
+  - text: A continuación, le voy a proporcionar una lista de 10 objetos, y tendrá que memorizar el máximo número posible. A continueción, le preguntaré y tendrá que decir los que recuerda. La lista es la siguiente \n Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta
   utter_ask_lista:
-    - text: ¿Cuántos  de los objetos puede repetir?
-
-
+  - text: ¿Cuántos  de los objetos puede repetir?
+  utter_enunciado_objetos:
+    - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
+  utter_objeto1:
+    - text: Objeto 1
+      image: "assets/boton.jpg"
+  utter_objeto2:
+    - text: Objeto 2
+      image: "assets/zapato.jpg"
+  utter_objeto3:
+    - text: Objeto 3
+      image: "assets/lapiz.jpg"
+  utter_objeto4:
+    - text: objeto 4
+      image: "assets/reloj.jpg"
+  utter_objeto5:
+    - text: Objeto 5
+      image: "assets/guitarra.png"
+  utter_pregunta_chatbot:
+    - text: Por último, podría decirme quién soy yo, ¿un assistente virtual o una persona real?
+  utter_pregunta_lista_despues:
+    - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -157,10 +191,12 @@ actions:
 - set_antecedentes_no
 - set_antecedentes_si
 - set_resultado_defs
+- set_resultado_lista
 - set_resultado_propios
 - utter_ask_age
 - utter_ask_antecedentes
 - utter_ask_name
+- utter_bienvenida
 - utter_cheer_up
 - utter_definiciones1
 - utter_definiciones2
@@ -168,7 +204,9 @@ actions:
 - utter_definiciones5
 - utter_did_that_help
 - utter_enunciado_definiciones
+- utter_enunciado_propios
 - utter_enunciado_test
+- utter_fin_pregunta
 - utter_goodbye
 - utter_gracias
 - utter_greet
@@ -176,6 +214,7 @@ actions:
 - utter_iamabot
 - utter_preg2
 - utter_preg_defs
+- utter_pregunta_lista
 - utter_propios1
 - utter_propios2
 - utter_propios3
@@ -185,7 +224,14 @@ actions:
 - validate_antecedentes
 - validate_name
 - validate_personal_form
-- utter_enunciado_propios
-- utter_fin_pregunta
-- utter_pregunta_lista
-- set_resultado_lista
+- utter_enunciado_objetos
+- utter_objeto1
+- utter_objeto2
+- utter_objeto3
+- utter_objeto4
+- utter_objeto5
+- utter_pregunta_chatbot
+- set_resultado_obj
+- set_resultado_lista_despues
+- set_resultado_lista_inmediata
+- utter_pregunta_lista_despues

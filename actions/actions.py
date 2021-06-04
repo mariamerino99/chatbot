@@ -57,6 +57,48 @@ class SetAntecedentesNo(Action):
 
         return [SlotSet("antecedentes", "no")]
 
+class SetChatbotBien(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "set_chatbot_bien"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        res = 1
+
+        return [SlotSet("res_chatbot", res)]
+
+class SetChatbotMal(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "set_chatbot_mal"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        res = -1
+
+        return [SlotSet("res_chatbot", res)]
+
+class ActionSessionStart(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "action_session_start"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        events = [SessionStarted()]
+
+        # any slots that should be carried over should come after the
+        # `session_started` event
+        events.extend(self.fetch_slots(tracker))
+
+        # an `action_listen` should be added at the end as a user message follows
+        events.append(ActionExecuted("utter_bienvenida"))
+
+        return events
+
 class SetResultadoDefs(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -65,20 +107,33 @@ class SetResultadoDefs(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_def")
-        resultado = (int(res)+1)
+        resultado = (int(res)+1) + resultado
         print(resultado)
         return [SlotSet("res_def", resultado)]
 
-class SetResultadoListaInmediata(Action):
+class SetResultadoListaDespues(Action):
     # return the name of the action
     def name(self) -> Text:
-        return "set_resultado_lista_inmediata"
+        return "set_resultado_lista_despues"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
         print(res)
-        return []
+        resultado = len(res)
+        return [SlotSet("res_lista_despues", resultado)]
+
+class SetResultadoListaInmediata(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "set_resultado_lista_despues"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        res = tracker.slots.get("lista_compra")
+        print(res)
+        resultado = len(res)
+        return [SlotSet("res_lista_inmediata", resultado)]
 
 class SetResultadoPropios(Action):
     # return the name of the action
@@ -88,9 +143,22 @@ class SetResultadoPropios(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_propios")
-        resultado = (int(res)+1)
+        resultado = (int(res)+1) + resultado
         print(resultado)
         return [SlotSet("res_propios", resultado)]
+
+class SetResultadoObjetos(Action):
+    # return the name of the action
+    def name(self) -> Text:
+        return "set_resultado_obj"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        res = tracker.slots.get("res_objetos")
+        resultado = (int(res)+1) + resultado
+        print(resultado)
+        return [SlotSet("res_objetos", resultado)]
+
 
 class ProbabilidadInicial(Action):
     # return the name of the action

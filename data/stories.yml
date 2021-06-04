@@ -10,6 +10,39 @@ stories:
     - action: utter_ask_lista
     - intent: recibir_lista_inmediata
     - action: set_resultado_lista
+    - action: utter_fin_pregunta
+    - action: utter_enunciado_objetos
+    - action: utter_objeto1
+
+## pregunta lista inmediata
+- story: preg_lista_inmediata
+  steps:
+    - intent: lista_despues
+    - action: utter_pregunta_lista_despues
+    - intent: recibir_lista_inmediata
+    - action: set_resultado_lista_despues
+    - action: utter_fin_pregunta
+    - action: utter_pregunta_chatbot
+
+## pregunta quien soy
+- story: preg_chatbot_bien
+  steps:
+    - intent: quien_soy
+    - action: utter_pregunta_chatbot
+    - intent: chatbot_bien
+    - action: set_chatbot_bien
+
+- story: preg_chatbot_mal
+  steps:
+    - intent: quien_soy
+    - action: utter_pregunta_chatbot
+    - intent: chatbot_mal
+    - or:
+        - intent: dudas
+        - intent: chatbot_mal
+        - intent: nlu_fallback
+    - action: set_chatbot_mal
+
 
 ## pregunta definiciones
 - story: preg_definiciones
@@ -34,22 +67,83 @@ stories:
     - action: utter_enunciado_propios
     - action: utter_propios1
 
+## pregunta definiciones
+- story: preg_objetos
+  steps:
+    - action: utter_enunciado_objetos
+    - action: utter_objeto1
+    - intent: objeto1
+    - action: set_resultado_obj
+    - action: utter_objeto2
+    - intent: objeto2
+    - action: set_resultado_obj
+    - action: utter_objeto3
+    - intent: objeto3
+    - action: set_resultado_obj
+    - action: utter_objeto4
+    - intent: objeto4
+    - action: set_resultado_obj
+    - action: utter_objeto5
+    - intent: objeto5
+    - action: set_resultado_obj
+    - action: utter_fin_pregunta
+    - action: utter_pregunta_lista_despues
+
+
 - story: preg_definiciones_mal
   steps:
     - intent: preg_defs
     - action: utter_definiciones1
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_definiciones2
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_definiciones3
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_definiciones4
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_definiciones5
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_fin_pregunta
     - action: utter_enunciado_propios
     - action: utter_propios1
+
+## pregunta denominacion objetos mal
+- story: pregunta_objetos_mal
+  steps:
+    - action: utter_enunciado_objetos
+    - action: utter_objeto1
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
+    - action: utter_objeto2
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
+    - action: utter_objeto3
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
+    - action: utter_objeto4
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
+    - action: utter_objeto5
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
+    - action: utter_fin_pregunta
+    - action: utter_pregunta_lista_despues
+
 
   ## pregunta nombres propios
 - story: preg_definiciones
@@ -76,15 +170,25 @@ stories:
   steps:
     - intent: preg_propios
     - action: utter_propios1
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_propios2
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_propios3
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_propios4
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_propios5
-    - intent: dudas
+    - or:
+        - intent: dudas
+        - intent: nlu_fallback
     - action: utter_fin_pregunta
 
 
@@ -100,6 +204,7 @@ stories:
 - story: datos_personales
   steps:
     - action: action_session_start
+    - action: utter_bienvenida
     - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias
@@ -120,6 +225,7 @@ stories:
 - story: datos_personales
   steps:
     - action: action_session_start
+    - action: utter_bienvenida
     - action: utter_ask_name
     - intent: provide_name
     - action: utter_gracias
@@ -306,3 +412,8 @@ stories:
   - slot_was_set:
     - res_def: 2
   - action: utter_definiciones3
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
