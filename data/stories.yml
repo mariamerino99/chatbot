@@ -14,7 +14,7 @@ stories:
     - action: utter_enunciado_objetos
     - action: utter_objeto1
 
-## pregunta lista inmediata
+## pregunta lista despues
 - story: preg_lista_inmediata
   steps:
     - intent: lista_despues

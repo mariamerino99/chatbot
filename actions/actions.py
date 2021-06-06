@@ -107,7 +107,8 @@ class SetResultadoDefs(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_def")
-        resultado = (int(res)+1) + resultado
+
+        resultado = (int(res)+1)
         print(resultado)
         return [SlotSet("res_def", resultado)]
 
@@ -143,7 +144,7 @@ class SetResultadoPropios(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_propios")
-        resultado = (int(res)+1) + resultado
+        resultado = (int(res)+1)
         print(resultado)
         return [SlotSet("res_propios", resultado)]
 
@@ -155,7 +156,7 @@ class SetResultadoObjetos(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_objetos")
-        resultado = (int(res)+1) + resultado
+        resultado = (int(res)+1)
         print(resultado)
         return [SlotSet("res_objetos", resultado)]
 

@@ -101,7 +101,6 @@ nlu:
     - Mi nombre es [Maria Merino](name)
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
-    - Me llamo [Pedro Sanchez](name)
     - María
 - intent: provide_age
   examples: |

@@ -92,13 +92,13 @@ slots:
 
 responses:
   utter_greet:
-  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos.
+  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 6 preguntas que evalúan diferentes aspectos cognitivos.
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
   utter_did_that_help:
   - text: Did that help you?
-  utter_happy:
+  untter_happy:
   - text: ¡Genial!
   utter_goodbye:
   - text: Adiós
@@ -128,7 +128,7 @@ responses:
       Resultado de preg defs
        - res_def: {res_def}
   utter_bienvenida:
-  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos.
+  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 5 preguntas que evalúan diferentes aspectos cognitivos. Antes de empezar, me gustaría preguntarle algunos datos personales.
   utter_definiciones1:
   - text: ¿Dónde se mira uno si quiere verse a si mismo?
   utter_definiciones2:
@@ -235,3 +235,5 @@ actions:
 - set_resultado_lista_despues
 - set_resultado_lista_inmediata
 - utter_pregunta_lista_despues
+- set_chatbot_bien
+- set_chatbot_mal
