@@ -19,7 +19,7 @@ stories:
   steps:
     - intent: lista_despues
     - action: utter_pregunta_lista_despues
-    - intent: recibir_lista_inmediata
+    - intent: recibir_lista_despues
     - action: set_resultado_lista_despues
     - action: utter_fin_pregunta
     - action: utter_pregunta_chatbot
@@ -31,6 +31,7 @@ stories:
     - action: utter_pregunta_chatbot
     - intent: chatbot_bien
     - action: set_chatbot_bien
+    - action: utter_fin_test
 
 - story: preg_chatbot_mal
   steps:
@@ -42,6 +43,7 @@ stories:
         - intent: chatbot_mal
         - intent: nlu_fallback
     - action: set_chatbot_mal
+    - action: utter_fin_test
 
 
 ## pregunta definiciones
@@ -262,6 +264,9 @@ stories:
     - intent: antecedentes_si
     - action: set_antecedentes_si
     - action: probabilidad_inicial
+    - action: utter_enunciado_test
+    - action: utter_enunciado_definiciones
+    - action: utter_definiciones1
 
 - story: interactive_story_1
   steps:
@@ -285,6 +290,9 @@ stories:
   - intent: deny
   - action: set_antecedentes_no
   - action: probabilidad_inicial
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
 
 
 

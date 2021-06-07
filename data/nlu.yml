@@ -208,6 +208,14 @@ nlu:
 - intent: recibir_lista_inmediata
   examples: |
     - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
+    - [cafe, tomate, pasta, pan](lista_compra)
+    - [arroz, pan, agua](lista_compra)
+- intent: recibir_lista_despues
+  examples: |
+    - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
+    - [cafe, tomate, pasta, pan](lista_compra)
+    - [arroz, pan, agua](lista_compra)
+    - [champu, pasta](lista_compra)
 
 - intent: lista_inmediata
   examples: |

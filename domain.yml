@@ -43,6 +43,7 @@ intents:
 - lista_despues
 - recibir_lista_inmediata
 - quien_soy
+- recibir_lista_despues
 entities:
 - age
 - antecedentes
@@ -167,23 +168,25 @@ responses:
     - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
   utter_objeto1:
     - text: Objeto 1
-      image: "assets/boton.jpg"
+      image: "https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/button.jpg"
   utter_objeto2:
     - text: Objeto 2
-      image: "assets/zapato.jpg"
+      image: "https://gestion.pe/resizer/zi_x07ZWzqyJPWcpiLohIE7KK6w=/1200x800/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/OEGKPKCE3RCRXMFJDPL5LK7OJE.jpg"
   utter_objeto3:
     - text: Objeto 3
-      image: "assets/lapiz.jpg"
+      image: "https://st.depositphotos.com/1741875/1378/i/600/depositphotos_13784614-stock-photo-pencil-isolated-on-pure-white.jpg"
   utter_objeto4:
     - text: objeto 4
-      image: "assets/reloj.jpg"
+      image: "https://www.consumoteca.com/wp-content/uploads/Reloj-de-pulsera-Amazon.jpg"
   utter_objeto5:
     - text: Objeto 5
-      image: "assets/guitarra.png"
+      image: "http://www.conservatoriotriana.com/departamentos/guitarra/historiaguitarra/guitarra.jpg"
   utter_pregunta_chatbot:
     - text: Por último, podría decirme quién soy yo, ¿un assistente virtual o una persona real?
   utter_pregunta_lista_despues:
     - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
+  utter_fin_test:
+    - text: ¡Enhorabuena! Ya ha acabado el test mini-mental. en un segundo le daré el resultado.
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -237,3 +240,4 @@ actions:
 - utter_pregunta_lista_despues
 - set_chatbot_bien
 - set_chatbot_mal
+- utter_fin_test

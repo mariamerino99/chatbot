@@ -121,7 +121,7 @@ class SetResultadoListaDespues(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
         print(res)
-        resultado = len(res)
+        resultado = len(res.split())
         return [SlotSet("res_lista_despues", resultado)]
 
 class SetResultadoListaInmediata(Action):
@@ -133,7 +133,7 @@ class SetResultadoListaInmediata(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
         print(res)
-        resultado = len(res)
+        resultado = len(res.split())
         return [SlotSet("res_lista_inmediata", resultado)]
 
 class SetResultadoPropios(Action):
