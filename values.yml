@@ -33,3 +33,15 @@ global:
     redis:
         # password to use in case there no external secret was provided
         password: "jTlxEyB3ns4Nhn8KMfhB"
+ingress:
+  annotations:
+    ingress.annotations.certmanager.k8s.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+  hosts:
+    - host: http://192.168.1.52
+      paths:
+      - /
+  tls:
+   - secretName: rasa-x-tsl
+     hosts:
+       - http://192.168.1.52
