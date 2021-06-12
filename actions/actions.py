@@ -243,6 +243,29 @@ class ActionReactToReminder(Action):
         return []
 
 
+class ActionSetFinalResult(Action):
+    """Reminds the user to call someone."""
+
+    def name(self) -> Text:
+        return "action_set_final_result"
+
+    async def run(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        prob = tracker.slots.get("prob")
+        r1 = tracker.slots.get("res_def")
+        r2 = tracker.slots.get("res_propios")
+        r3 = tracker.slots.get("res_lista_inmediata")
+        r4 = tracker.slots.get("res_lista-despues")
+        r5 = tracker.slots.get("res_objetos")
+        r6 = tracker.slots.get("res_chatbot")
+
+        return []
+
+
 
 
 
