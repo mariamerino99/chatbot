@@ -241,3 +241,4 @@ actions:
 - set_chatbot_bien
 - set_chatbot_mal
 - utter_fin_test
+- action_set_final_result

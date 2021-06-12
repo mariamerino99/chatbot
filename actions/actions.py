@@ -262,7 +262,15 @@ class ActionSetFinalResult(Action):
         r4 = tracker.slots.get("res_lista-despues")
         r5 = tracker.slots.get("res_objetos")
         r6 = tracker.slots.get("res_chatbot")
-
+        res = int(r1) + int(r2) + int(r3) + int(r4) + int(r5) + int(r6) - int(prob)
+        if res < 21:
+            dispatcher.utter_message("Hemos llegado hasta PROB 0", res)
+        elif 21 < res < 26:
+            dispatcher.utter_message("Hemos llegado hasta PROB 1", res)
+        elif 26 < res < 29:
+            dispatcher.utter_message("Hemos llegado hasta PROB 2", res)
+        elif res > 29:
+            dispatcher.utter_message("Hemos llegado hasta PROB 3", res)
         return []
 
 
