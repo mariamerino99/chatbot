@@ -11,7 +11,7 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 action_endpoint:
-  url: "https://3da00bf68a22.ngrok.io//webhook"
+  url: "localhost_5005/webhook"
 
 # Tracker store which is used to store the conversations.
 # By default the conversations are stored in memory.
@@ -40,3 +40,13 @@ action_endpoint:
 #  username: username
 #  password: password
 #  queue: queue
+
+
+event_broker:
+  type: "pika"
+  url: 192.168.1.52
+  port: 5672  # change if your RabbitMQ service is exposed on a different port
+  username: "user"  # if customized, value of the RABBITMQ_USERNAME environment variable
+  password: "P0JuJdqhXzg9RIY3YF3V"
+  queues:
+    - "rasa_production_events"  # if using a custom queue, value of the RABBITMQ_QUEUE environment variable
