@@ -3,24 +3,31 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- greet
-- provide_age
+- objeto3
 - provide_name
-- affirm
-- definiciones1
-- definiciones2
+- dudas
+- objeto1
+- deny
+- objeto4
 - propios3
-- propios1
-- preg_propios
 - propios4
-- propios2
+- greet
+- propios1
+- recibir_lista_inmediata
+- objeto5
+- definiciones2
 - nlu_fallback
 - definiciones5
+- definiciones1
+- provide_age
+- chatbot_mal
+- definiciones3
+- affirm
+- preg_propios
+- propios2
 - preg_defs
 - antecedentes_si
 - hacer_preg2
-- definiciones3
-- deny
 - goodbye
 - mood_great
 - mood_unhappy
@@ -29,19 +36,12 @@ intents:
 - check_prob_inicial
 - check_preg_defs
 - definiciones4
-- dudas
 - lista_frutas
 - propios5
 - lista_inmediata
-- objeto1
 - objeto2
-- objeto3
-- objeto4
-- objeto5
 - chatbot_bien
-- chatbot_mal
 - lista_despues
-- recibir_lista_inmediata
 - quien_soy
 entities:
 - age
@@ -56,24 +56,28 @@ slots:
   age:
     type: float
     influence_conversation: true
-
+    max_value: 1.0
+    min_value: 0.0
   antecedentes:
     type: text
     influence_conversation: true
   prob:
     type: float
     influence_conversation: true
-
+    max_value: 1.0
+    min_value: 0.0
   res_def:
     type: float
     initial_value: 0
     influence_conversation: true
-
+    max_value: 1.0
+    min_value: 0.0
   res_propios:
     type: float
     initial_value: 0
     influence_conversation: true
-
+    max_value: 1.0
+    min_value: 0.0
   preg_def:
     type: text
     influence_conversation: true
@@ -83,16 +87,25 @@ slots:
   res_lista_inmediata:
     type: float
     initial_value: 0
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   res_lista_despues:
     type: float
     initial_value: 0
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
   res_objetos:
     type: float
     initial_value: 0
-
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
 responses:
   utter_greet:
-  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 6 preguntas que evalúan diferentes aspectos cognitivos.
+  - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 6 preguntas que evalúan diferentes aspectos cognitivos. Antes de empezar, me gustaría preguntarle algunos datos personales.
+
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -164,46 +177,54 @@ responses:
   utter_ask_lista:
   - text: ¿Cuántos  de los objetos puede repetir?
   utter_enunciado_objetos:
-    - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
+  - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
   utter_objeto1:
-    - text: Objeto 1
-      image: "assets/boton.jpg"
+  - text: Objeto 1
+    image: assets/boton.jpg
   utter_objeto2:
-    - text: Objeto 2
-      image: "assets/zapato.jpg"
+  - text: Objeto 2
+    image: assets/zapato.jpg
   utter_objeto3:
-    - text: Objeto 3
-      image: "assets/lapiz.jpg"
+  - text: Objeto 3
+    image: assets/lapiz.jpg
   utter_objeto4:
-    - text: objeto 4
-      image: "assets/reloj.jpg"
+  - text: objeto 4
+    image: assets/reloj.jpg
   utter_objeto5:
-    - text: Objeto 5
-      image: "assets/guitarra.png"
+  - text: Objeto 5
+    image: assets/guitarra.png
   utter_pregunta_chatbot:
-    - text: Por último, podría decirme quién soy yo, ¿un assistente virtual o una persona real?
+  - text: Por último, podría decirme quién soy yo, ¿un assistente virtual o una persona real?
   utter_pregunta_lista_despues:
-    - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
+  - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
 actions:
 - action_react_to_reminder
 - action_set_reminder
 - probabilidad_inicial
 - set_antecedentes_no
 - set_antecedentes_si
+- set_chatbot_bien
+- set_chatbot_mal
 - set_resultado_defs
 - set_resultado_lista
+- set_resultado_lista_despues
+- set_resultado_lista_inmediata
+- set_resultado_obj
 - set_resultado_propios
 - utter_ask_age
 - utter_ask_antecedentes
+- utter_ask_lista
 - utter_ask_name
 - utter_bienvenida
 - utter_cheer_up
 - utter_definiciones1
 - utter_definiciones2
 - utter_definiciones3
+- utter_definiciones4
 - utter_definiciones5
 - utter_did_that_help
 - utter_enunciado_definiciones
+- utter_enunciado_objetos
 - utter_enunciado_propios
 - utter_enunciado_test
 - utter_fin_pregunta
@@ -212,9 +233,16 @@ actions:
 - utter_greet
 - utter_happy
 - utter_iamabot
+- utter_objeto1
+- utter_objeto2
+- utter_objeto3
+- utter_objeto4
+- utter_objeto5
 - utter_preg2
 - utter_preg_defs
+- utter_pregunta_chatbot
 - utter_pregunta_lista
+- utter_pregunta_lista_despues
 - utter_propios1
 - utter_propios2
 - utter_propios3
@@ -224,16 +252,3 @@ actions:
 - validate_antecedentes
 - validate_name
 - validate_personal_form
-- utter_enunciado_objetos
-- utter_objeto1
-- utter_objeto2
-- utter_objeto3
-- utter_objeto4
-- utter_objeto5
-- utter_pregunta_chatbot
-- set_resultado_obj
-- set_resultado_lista_despues
-- set_resultado_lista_inmediata
-- utter_pregunta_lista_despues
-- set_chatbot_bien
-- set_chatbot_mal

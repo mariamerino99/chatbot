@@ -127,7 +127,7 @@ class SetResultadoListaDespues(Action):
 class SetResultadoListaInmediata(Action):
     # return the name of the action
     def name(self) -> Text:
-        return "set_resultado_lista_despues"
+        return "set_resultado_lista"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
