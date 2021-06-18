@@ -102,6 +102,9 @@ nlu:
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
     - María
+    - [maria](name)
+    - [Maria](name)
+    - me llamo [maria](name)
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
@@ -154,6 +157,7 @@ nlu:
 - intent: definiciones4
   examples: |
     - La miel
+    - miel
 - intent: definiciones5
   examples: |
     - La nevera
@@ -175,7 +179,6 @@ nlu:
   examples: |
     - pregunta con timer
     - EXTERNAL: hacer_preg2
-
 - intent: nlu_fallback
   examples: |
     - un sofa
@@ -208,7 +211,6 @@ nlu:
 - intent: recibir_lista_inmediata
   examples: |
     - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
-
 - intent: lista_inmediata
   examples: |
     - Lista inmediata
@@ -217,49 +219,43 @@ nlu:
     - Un assitente virtual
     - un chatbot
     - Un robot
-
 - intent: chatbot_mal
   examples: |
     - Una persona real
     - persona
     - una persona
-
 - intent: objeto1
   examples: |
-   - Un botón
-   - un boton
-   - botón
-   - boton
-
+    - Un botón
+    - un boton
+    - botón
+    - boton
 - intent: objeto2
   examples: |
-   - Un zapato
-   - zapapto
-
+    - Un zapato
+    - zapapto
+    - un zapato
 - intent: objeto3
   examples: |
-   - Un lápiz
-   - lapiz
-   - lápiz
-   - un lapiz
-
+    - Un lápiz
+    - lapiz
+    - lápiz
+    - un lapiz
 - intent: objeto4
   examples: |
-   - un reloj
-   - un reloj de pulsera
-   - Un reloj
-
+    - un reloj
+    - un reloj de pulsera
+    - Un reloj
 - intent: objeto5
   examples: |
-   - Una guitarra
-   - un instrumento
-   - una guitarra
-   - guitarra
+    - Una guitarra
+    - un instrumento
+    - una guitarra
+    - guitarra
 - intent: lista_despues
   examples: |
     - lista despues
     - hacer pregunta lista despues
-
 - intent: quien_soy
   examples: |
     - pregunta chatbot
