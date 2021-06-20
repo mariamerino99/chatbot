@@ -63,6 +63,7 @@ slots:
     influence_conversation: true
   prob:
     type: float
+    initial_value: 1
     influence_conversation: true
 
   res_def:

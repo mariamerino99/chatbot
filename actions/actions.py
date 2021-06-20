@@ -173,7 +173,7 @@ class ProbabilidadInicial(Action):
         name= tracker.slots.get("name")
         ages= tracker.slots.get("age")
         antecedentes= tracker.slots.get("antecedentes")
-        prob = 2
+        prob = 1
 
         # sanity check to ensure that it was filled by rasa
         if name and ages and antecedentes:
@@ -182,14 +182,14 @@ class ProbabilidadInicial(Action):
                 prob = 0
             elif (age > 65 and age < 75):
                 if antecedentes == "no":
+                    prob = 0
+                elif antecedentes == "si":
+                    prob = 1
+            elif age > 75:
+                if antecedentes == "no":
                     prob = 1
                 elif antecedentes == "si":
                     prob = 2
-            elif age > 75:
-                if antecedentes == "no":
-                    prob = 2
-                elif antecedentes == "si":
-                    prob = 3
             # dispatcher.utter_message("Hemos llegado hasta NOMBRE", name)
         else:
             prob=2
@@ -238,7 +238,7 @@ class ActionReactToReminder(Action):
     ) -> List[Dict[Text, Any]]:
 
 
-        dispatcher.utter_message(f"Tiempo!")
+        dispatcher.utter_message("Tiempo!")
 
         return []
 
@@ -263,14 +263,15 @@ class ActionSetFinalResult(Action):
         r5 = tracker.slots.get("res_objetos")
         r6 = tracker.slots.get("res_chatbot")
         res = int(r1) + int(r2) + int(r3) + int(r4) + int(r5) + int(r6) - int(prob)
+        dispatcher.utter_message("El resultado es", res)
         if res < 21:
-            dispatcher.utter_message("Hemos llegado hasta PROB 0", res)
-        elif 21 < res < 26:
-            dispatcher.utter_message("Hemos llegado hasta PROB 1", res)
-        elif 26 < res < 29:
-            dispatcher.utter_message("Hemos llegado hasta PROB 2", res)
-        elif res > 29:
             dispatcher.utter_message("Hemos llegado hasta PROB 3", res)
+        elif 21 < res < 26:
+            dispatcher.utter_message("Hemos llegado hasta PROB 2", res)
+        elif 26 < res < 29:
+            dispatcher.utter_message("Hemos llegado hasta PROB 1", res)
+        elif res > 29:
+            dispatcher.utter_message("Hemos llegado hasta PROB 0", res)
         return []
 
 

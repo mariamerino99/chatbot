@@ -25,6 +25,7 @@ stories:
   - intent: chatbot_bien
   - action: set_chatbot_bien
   - action: utter_fin_test
+  - action: action_set_final_result
 - story: preg_chatbot_mal
   steps:
   - intent: quien_soy
@@ -36,6 +37,7 @@ stories:
     - intent: nlu_fallback
   - action: set_chatbot_mal
   - action: utter_fin_test
+  - action: action_set_final_result
 - story: preg_definiciones
   steps:
   - intent: preg_defs
