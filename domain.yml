@@ -186,7 +186,7 @@ responses:
   utter_pregunta_lista_despues:
     - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
   utter_fin_test:
-    - text: ¡Enhorabuena! Ya ha acabado el test mini-mental. en un segundo le daré el resultado.
+    - text: ¡Enhorabuena! Ya ha acabado el test mini-mental. En unos segundos le daré el resultado.
 actions:
 - action_react_to_reminder
 - action_set_reminder
