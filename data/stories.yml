@@ -1,273 +1,240 @@
 version: "2.0"
-
 stories:
-
-## pregunta lista inmediata
 - story: preg_lista_inmediata
   steps:
-    - intent: lista_inmediata
-    - action: utter_pregunta_lista
-    - action: utter_ask_lista
-    - intent: recibir_lista_inmediata
-    - action: set_resultado_lista
-    - action: utter_fin_pregunta
-    - action: utter_enunciado_objetos
-    - action: utter_objeto1
-
-## pregunta lista despues
+  - intent: lista_inmediata
+  - action: utter_pregunta_lista
+  - action: utter_ask_lista
+  - intent: recibir_lista_inmediata
+  - action: set_resultado_lista
+  - action: utter_fin_pregunta
+  - action: utter_enunciado_objetos
+  - action: utter_objeto1
 - story: preg_lista_inmediata
   steps:
-    - intent: lista_despues
-    - action: utter_pregunta_lista_despues
-    - intent: recibir_lista_despues
-    - action: set_resultado_lista_despues
-    - action: utter_fin_pregunta
-    - action: utter_pregunta_chatbot
-
-## pregunta quien soy
+  - intent: lista_despues
+  - action: utter_pregunta_lista_despues
+  - intent: recibir_lista_despues
+  - action: set_resultado_lista_despues
+  - action: utter_fin_pregunta
+  - action: utter_pregunta_chatbot
 - story: preg_chatbot_bien
   steps:
-    - intent: quien_soy
-    - action: utter_pregunta_chatbot
-    - intent: chatbot_bien
-    - action: set_chatbot_bien
-    - action: utter_fin_test
-
+  - intent: quien_soy
+  - action: utter_pregunta_chatbot
+  - intent: chatbot_bien
+  - action: set_chatbot_bien
+  - action: utter_fin_test
 - story: preg_chatbot_mal
   steps:
-    - intent: quien_soy
-    - action: utter_pregunta_chatbot
+  - intent: quien_soy
+  - action: utter_pregunta_chatbot
+  - intent: chatbot_mal
+  - or:
+    - intent: dudas
     - intent: chatbot_mal
-    - or:
-        - intent: dudas
-        - intent: chatbot_mal
-        - intent: nlu_fallback
-    - action: set_chatbot_mal
-    - action: utter_fin_test
-
-
-## pregunta definiciones
+    - intent: nlu_fallback
+  - action: set_chatbot_mal
+  - action: utter_fin_test
 - story: preg_definiciones
   steps:
-    - intent: preg_defs
-    - action: utter_definiciones1
-    - intent: definiciones1
-    - action: set_resultado_defs
-    - action: utter_definiciones2
-    - intent: definiciones2
-    - action: set_resultado_defs
-    - action: utter_definiciones3
-    - intent: definiciones3
-    - action: set_resultado_defs
-    - action: utter_definiciones4
-    - intent: definiciones4
-    - action: set_resultado_defs
-    - action: utter_definiciones5
-    - intent: definiciones5
-    - action: set_resultado_defs
-    - action: utter_fin_pregunta
-    - action: utter_enunciado_propios
-    - action: utter_propios1
-
-## pregunta definiciones
+  - intent: preg_defs
+  - action: utter_definiciones1
+  - intent: definiciones1
+  - action: set_resultado_defs
+  - action: utter_definiciones2
+  - intent: definiciones2
+  - action: set_resultado_defs
+  - action: utter_definiciones3
+  - intent: definiciones3
+  - action: set_resultado_defs
+  - action: utter_definiciones4
+  - intent: definiciones4
+  - action: set_resultado_defs
+  - action: utter_definiciones5
+  - intent: definiciones5
+  - action: set_resultado_defs
+  - action: utter_fin_pregunta
+  - action: utter_enunciado_propios
+  - action: utter_propios1
 - story: preg_objetos
   steps:
-    - action: utter_enunciado_objetos
-    - action: utter_objeto1
-    - intent: objeto1
-    - action: set_resultado_obj
-    - action: utter_objeto2
-    - intent: objeto2
-    - action: set_resultado_obj
-    - action: utter_objeto3
-    - intent: objeto3
-    - action: set_resultado_obj
-    - action: utter_objeto4
-    - intent: objeto4
-    - action: set_resultado_obj
-    - action: utter_objeto5
-    - intent: objeto5
-    - action: set_resultado_obj
-    - action: utter_fin_pregunta
-    - action: utter_pregunta_lista_despues
-
-
+  - action: utter_enunciado_objetos
+  - action: utter_objeto1
+  - intent: objeto1
+  - action: set_resultado_obj
+  - action: utter_objeto2
+  - intent: objeto2
+  - action: set_resultado_obj
+  - action: utter_objeto3
+  - intent: objeto3
+  - action: set_resultado_obj
+  - action: utter_objeto4
+  - intent: objeto4
+  - action: set_resultado_obj
+  - action: utter_objeto5
+  - intent: objeto5
+  - action: set_resultado_obj
+  - action: utter_fin_pregunta
+  - action: utter_pregunta_lista_despues
 - story: preg_definiciones_mal
   steps:
-    - intent: preg_defs
-    - action: utter_definiciones1
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_definiciones2
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_definiciones3
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_definiciones4
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_definiciones5
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_fin_pregunta
-    - action: utter_enunciado_propios
-    - action: utter_propios1
-
-## pregunta denominacion objetos mal
+  - intent: preg_defs
+  - action: utter_definiciones1
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_definiciones2
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_definiciones3
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_definiciones4
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_definiciones5
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_fin_pregunta
+  - action: utter_enunciado_propios
+  - action: utter_propios1
 - story: pregunta_objetos_mal
   steps:
-    - action: utter_enunciado_objetos
-    - action: utter_objeto1
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_objeto2
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_objeto3
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_objeto4
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_objeto5
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_fin_pregunta
-    - action: utter_pregunta_lista_despues
-
-
-  ## pregunta nombres propios
+  - action: utter_enunciado_objetos
+  - action: utter_objeto1
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_objeto2
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_objeto3
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_objeto4
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_objeto5
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_fin_pregunta
+  - action: utter_pregunta_lista_despues
 - story: preg_definiciones
   steps:
-    - intent: preg_propios
-    - action: utter_propios1
-    - intent: propios1
-    - action: set_resultado_propios
-    - action: utter_propios2
-    - intent: propios2
-    - action: set_resultado_propios
-    - action: utter_propios3
-    - intent: propios3
-    - action: set_resultado_propios
-    - action: utter_propios4
-    - intent: propios4
-    - action: set_resultado_propios
-    - action: utter_propios5
-    - intent: propios5
-    - action: set_resultado_propios
-    - action: utter_fin_pregunta
-
+  - intent: preg_propios
+  - action: utter_propios1
+  - intent: propios1
+  - action: set_resultado_propios
+  - action: utter_propios2
+  - intent: propios2
+  - action: set_resultado_propios
+  - action: utter_propios3
+  - intent: propios3
+  - action: set_resultado_propios
+  - action: utter_propios4
+  - intent: propios4
+  - action: set_resultado_propios
+  - action: utter_propios5
+  - intent: propios5
+  - action: set_resultado_propios
+  - action: utter_fin_pregunta
 - story: preg_propios_mal
   steps:
-    - intent: preg_propios
-    - action: utter_propios1
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_propios2
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_propios3
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_propios4
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_propios5
-    - or:
-        - intent: dudas
-        - intent: nlu_fallback
-    - action: utter_fin_pregunta
-
-
-## pregunta frutas
+  - intent: preg_propios
+  - action: utter_propios1
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_propios2
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_propios3
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_propios4
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_propios5
+  - or:
+    - intent: dudas
+    - intent: nlu_fallback
+  - action: utter_fin_pregunta
 - story: pregunta frutas
   steps:
-    - action: action_set_reminder
-    - action: action_listen
-    - intent: lista_frutas
-    - action: action_react_to_reminder
-
-## datos personales
+  - action: action_set_reminder
+  - intent: lista_frutas
+  - action: action_react_to_reminder
 - story: datos_personales
   steps:
-    - action: action_session_start
-    - action: utter_bienvenida
-    - action: utter_ask_name
-    - intent: provide_name
-    - action: utter_gracias
-    - action: utter_ask_age
-    - intent: provide_age
-    - action: utter_gracias
-    - action: utter_ask_antecedentes
-    - or:
-        - intent: affirm
-        - intent: antecedentes_si
-    - action: set_antecedentes_si
-    - action: probabilidad_inicial
-    - action: utter_enunciado_test
-    - action: utter_enunciado_definiciones
-    - action: utter_definiciones1
-
-  ## datos personales antecedentes no
-- story: datos_personales
-  steps:
-    - action: action_session_start
-    - action: utter_bienvenida
-    - action: utter_ask_name
-    - intent: provide_name
-    - action: utter_gracias
-    - action: utter_ask_age
-    - intent: provide_age
-    - action: utter_gracias
-    - action: utter_ask_antecedentes
+  - action: utter_bienvenida
+  - action: utter_ask_name
+  - intent: provide_name
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - or:
+    - intent: affirm
     - intent: antecedentes_si
-    - action: set_antecedentes_si
-    - action: probabilidad_inicial
-    - action: utter_enunciado_test
-    - action: utter_enunciado_definiciones
-    - action: utter_definiciones1
-
+  - action: set_antecedentes_si
+  - action: probabilidad_inicial
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
+- story: datos_personales
+  steps:
+  - action: utter_bienvenida
+  - action: utter_ask_name
+  - intent: provide_name
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: antecedentes_si
+  - action: set_antecedentes_si
+  - action: probabilidad_inicial
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
 - story: interactive_story_1
   steps:
-    - intent: greet
-    - action: utter_greet
-    - action: utter_ask_name
-    - intent: provide_name
-      entities:
-        - name: 'Maria Merino'
-    - slot_was_set:
-        - name: Maria Merino
-    - action: utter_gracias
-    - action: utter_ask_age
-    - intent: provide_age
-      entities:
-        - age: '21'
-    - slot_was_set:
-        - age: '21'
-    - action: utter_gracias
-    - action: utter_ask_antecedentes
-    - intent: antecedentes_si
-    - action: set_antecedentes_si
-    - action: probabilidad_inicial
-    - action: utter_enunciado_test
-    - action: utter_enunciado_definiciones
-    - action: utter_definiciones1
-
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+  - intent: provide_name
+    entities:
+    - name: Maria Merino
+  - slot_was_set:
+    - name: Maria Merino
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+    entities:
+    - age: '21'
+  - slot_was_set:
+    - age: '21'
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: antecedentes_si
+  - action: set_antecedentes_si
+  - action: probabilidad_inicial
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -293,16 +260,12 @@ stories:
   - action: utter_enunciado_test
   - action: utter_enunciado_definiciones
   - action: utter_definiciones1
-
-
-
 - story: interactive_story_1
   steps:
   - intent: hacer_preg2
   - action: utter_preg2
   - action: action_set_reminder
   - action: action_react_to_reminder
-
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -354,7 +317,6 @@ stories:
   - action: action_set_reminder
   - action: action_react_to_reminder
   - intent: hacer_preg2
-
 - story: interactive_story_1
   steps:
   - intent: preg_propios
@@ -380,7 +342,6 @@ stories:
     - res_propios: 4
   - action: utter_propios5
   - intent: nlu_fallback
-
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -420,8 +381,17 @@ stories:
   - slot_was_set:
     - res_def: 2
   - action: utter_definiciones3
-
 - story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
+- story: Story from Conversation ID cb5961320567449bb56867acce31c1c8
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+- story: Story from Conversation ID 2d1ade2bbfaf412ea3b7ee11168a820e
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
