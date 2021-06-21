@@ -18,6 +18,7 @@ nlu:
     - buenos días
     - buenos dias
     - buenas
+    - Hola
 - intent: goodbye
   examples: |
     - good afternoon
@@ -42,6 +43,7 @@ nlu:
     - sí
     - claro
     - Sí
+    - si
 - intent: deny
   examples: |
     - no
@@ -102,7 +104,16 @@ nlu:
     - Soy [Maria Merino](name)
     - [Maria Merino](name)
     - María
-    - [Maria Merino](name)
+    - Me llamo [Asio](name)
+    - me llamo [Maria](name)
+    - Me llamo [Maria](name)
+    - Me llamo [marta](name)
+    - Me llamo [María](name)
+    - me llamo [maria merino](name)
+    - [maria](name)
+    - [Maria](name)
+    - me llamo [maria](name)
+
 - intent: provide_age
   examples: |
     - Tengo [21](age) años
@@ -112,6 +123,8 @@ nlu:
     - tengo [21](age) años
     - Tengo [67](age) años
     - Tengo [21](age) años
+    - [53](age)
+
 - intent: antecedentes_si
   examples: |
     - Mi [abuelo](familiar) tuvo
@@ -139,23 +152,33 @@ nlu:
     - A saber
     - siguiente
     - no lo se
+    - ?
 - intent: definiciones1
   examples: |
     - Un espejo
     - un espejo
+    - En el espejo
 - intent: definiciones2
   examples: |
     - La almohada
     - Un cojín
     - Una almohada
     - una almohada
+    - En la almohada
+    - Almohada
+    - la almohada
 - intent: definiciones3
   examples: |
     - La Farmacia
     - una farmacia
+    - En la farmacia
+    - la farmacia
+    - Farmacia
 - intent: definiciones4
   examples: |
     - La miel
+    - miel
+    - Miel
 - intent: definiciones5
   examples: |
     - La nevera
@@ -163,6 +186,8 @@ nlu:
     - una nevera
     - Una nevera
     - la nevera
+    - Nevera
+    - En la nevera
 - intent: preg_defs
   examples: |
     - Hacer preg defs
@@ -173,6 +198,8 @@ nlu:
     - Pregunta nombres propios
     - hacer preg propios
     - pregunta con tiempo
+    - Pregunta propios
+    - propios
 - intent: hacer_preg2
   examples: |
     - pregunta con timer
@@ -182,39 +209,65 @@ nlu:
     - un sofa
     - Isable segunda
     - Juan Carlos I
+    - a su mujer
+    - sabana
+    - microondas
+    - Juan Carlos
+    - un supermercado
+
 - intent: propios1
   examples: |
     - Pedro Sánchez
     - Pedro Sanchez
+    - Sánchez
+    - Sanchez
 - intent: propios2
   examples: |
     - Felipe Borbón
     - Felipe sexto
     - Felipe VI
+    - Felipe Vi
 - intent: propios3
   examples: |
     - Francisco primero
     - Francisco
     - Francisco I
+    - fran
 - intent: propios4
   examples: |
     - Florentino Pérez
     - Florentino
     - Florentino Perez
+    - florentino
 - intent: propios5
   examples: |
     - Isabel segunda
     - Isabel
     - Elizabeth
     - Elizabeth the second
+    - Isabel II
 - intent: recibir_lista_inmediata
   examples: |
     - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
     - [Arroz, pan, agua, cafe](lista_compra)
     - [Arroz, pan, cafe](lista_compra)
+    - [cafe, tomate, pasta, pan](lista_compra)
+    - [arroz, pan, agua](lista_compra)
+- intent: recibir_lista_despues
+  examples: |
+    - [Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta](lista_compra)
+    - [cafe, tomate, pasta, pan](lista_compra)
+    - [arroz, pan, agua](lista_compra)
+    - [champu, pasta](lista_compra)
+    - [pan](lista_compra), [agua](lista_compra), [arroz](lista_compra), [queso](lista_compra),
+    - [pan](lista_compra), [agua](lista_compra), [queso](lista_compra), [pasta](lista_compra)
+    - [agua](lista_compra), [pan](lista_compra), [arroz](lista_compra), [pasta](lista_compra)
+    - [agua](lista_compra), [pan](lista_compra), [pasta](lista_compra), [arroz](lista_compra)
+
 - intent: lista_inmediata
   examples: |
     - Lista inmediata
+    - lista inmediata
 - intent: chatbot_bien
   examples: |
     - Un assitente virtual
@@ -232,10 +285,13 @@ nlu:
     - botón
     - boton
     - un botón
+
 - intent: objeto2
   examples: |
     - Un zapato
     - zapapto
+    - un zapato
+
 - intent: objeto3
   examples: |
     - Un lápiz

@@ -18,3 +18,5 @@ COPY ./actions /app/actions
 
 # By best practices, don't run the code with root user
 USER 1001
+CMD ["start", "--actions", "actions"]
+EXPOSE 80

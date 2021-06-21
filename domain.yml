@@ -43,6 +43,7 @@ intents:
 - chatbot_bien
 - lista_despues
 - quien_soy
+- recibir_lista_despues
 entities:
 - age
 - antecedentes
@@ -63,6 +64,7 @@ slots:
     influence_conversation: true
   prob:
     type: float
+    initial_value: 1
     influence_conversation: true
     max_value: 1.0
     min_value: 0.0
@@ -169,34 +171,45 @@ responses:
   utter_enunciado_definiciones:
   - text: Esta pregunta consiste en identificar palabras a través de sus definiciones. Yo le proporcionaré la definición y tendrá que decir a qué objeto se refiere. ¡Comencemos!
   utter_enunciado_propios:
-  - text: Esta pregunta consiste en identificar nombres propios de personas conocidas. Se proporcionará una descripción se espera el nombre de la persona correspondiente. Vamos a empezar
+  - text: Esta pregunta consiste en identificar nombres propios de personas célebres. Se proporcionará una descripción, y se espera el nombre de la persona correspondiente. Vamos a empezar
   utter_fin_pregunta:
   - text: ¡Perfecto! Hemos finalizado esta pregunta. Procedemos con la siguiente.
   utter_pregunta_lista:
-  - text: A continuación, le voy a proporcionar una lista de 10 objetos, y tendrá que memorizar el máximo número posible. A continueción, le preguntaré y tendrá que decir los que recuerda. La lista es la siguiente \n Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta
+  - text: A continuación, le voy a proporcionar una lista de 10 objetos, y tendrá que memorizar el máximo número posible. La lista es la siguiente \n Café, Tomate, Arroz, Queso, Sal, Agua, Pan, Champú, Atún, Pasta
   utter_ask_lista:
   - text: ¿Cuántos  de los objetos puede repetir?
   utter_enunciado_objetos:
   - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
   utter_objeto1:
-  - text: Objeto 1
-    image: assets/boton.jpg
+
+    - text: Objeto 1
+      image: "https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/button.jpg"
   utter_objeto2:
-  - text: Objeto 2
-    image: assets/zapato.jpg
+    - text: Objeto 2
+      image: "https://gestion.pe/resizer/zi_x07ZWzqyJPWcpiLohIE7KK6w=/1200x800/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/OEGKPKCE3RCRXMFJDPL5LK7OJE.jpg"
   utter_objeto3:
-  - text: Objeto 3
-    image: assets/lapiz.jpg
+    - text: Objeto 3
+      image: "https://st.depositphotos.com/1741875/1378/i/600/depositphotos_13784614-stock-photo-pencil-isolated-on-pure-white.jpg"
   utter_objeto4:
-  - text: objeto 4
-    image: assets/reloj.jpg
+    - text: objeto 4
+      image: "https://www.consumoteca.com/wp-content/uploads/Reloj-de-pulsera-Amazon.jpg"
   utter_objeto5:
-  - text: Objeto 5
-    image: assets/guitarra.png
+    - text: Objeto 5
+      image: "http://www.conservatoriotriana.com/departamentos/guitarra/historiaguitarra/guitarra.jpg"
+
   utter_pregunta_chatbot:
   - text: Por último, podría decirme quién soy yo, ¿un assistente virtual o una persona real?
   utter_pregunta_lista_despues:
-  - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
+    - text: Ahora, deberá decirme los objetos de la lista anterior de los que se acuerda
+  utter_fin_test:
+    - text: ¡Enhorabuena! Ya ha acabado el test mini-mental. En unos segundos le daré el resultado.
+  utter_res0:
+    - text: Los resultados del test son satisfactorios. No muestran ningún síntoma de algún trastorno cognitivo.
+  utter_res1:
+    - text: Los resultados del test no son tan altos como lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como el Deterioro Cognitivo leve. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.
+  utter_res2:
+    - text: Los resultados del test son más bajos de lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como la enfermedad del Alzheimer. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.
+
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -207,8 +220,6 @@ actions:
 - set_chatbot_mal
 - set_resultado_defs
 - set_resultado_lista
-- set_resultado_lista_despues
-- set_resultado_lista_inmediata
 - set_resultado_obj
 - set_resultado_propios
 - utter_ask_age
@@ -240,9 +251,7 @@ actions:
 - utter_objeto5
 - utter_preg2
 - utter_preg_defs
-- utter_pregunta_chatbot
 - utter_pregunta_lista
-- utter_pregunta_lista_despues
 - utter_propios1
 - utter_propios2
 - utter_propios3
@@ -252,3 +261,13 @@ actions:
 - validate_antecedentes
 - validate_name
 - validate_personal_form
+- utter_pregunta_chatbot
+- set_resultado_lista_despues
+- set_resultado_lista_inmediata
+- utter_pregunta_lista_despues
+- utter_fin_test
+- action_set_final_result
+- utter_res0
+- utter_res1
+- utter_res2
+

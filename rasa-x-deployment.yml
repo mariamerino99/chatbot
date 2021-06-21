@@ -1,4 +1,4 @@
----
+  ---
 # Source: rasa-x/charts/rabbitmq/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
