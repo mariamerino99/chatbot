@@ -152,6 +152,8 @@ stories:
   - intent: propios5
   - action: set_resultado_propios
   - action: utter_fin_pregunta
+  - action: utter_pregunta_lista
+  - action: utter_ask_lista
 - story: preg_propios_mal
   steps:
   - intent: preg_propios
@@ -177,6 +179,8 @@ stories:
     - intent: dudas
     - intent: nlu_fallback
   - action: utter_fin_pregunta
+  - action: utter_pregunta_lista
+  - action: utter_ask_lista
 - story: pregunta frutas
   steps:
   - action: action_set_reminder
@@ -352,6 +356,8 @@ stories:
     - res_propios: 4
   - action: utter_propios5
   - intent: nlu_fallback
+  - action: utter_pregunta_lista
+  - action: utter_ask_lista
 - story: interactive_story_1
   steps:
   - intent: greet
