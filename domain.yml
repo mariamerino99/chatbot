@@ -44,6 +44,8 @@ intents:
 - lista_despues
 - quien_soy
 - recibir_lista_despues
+- pregunta_objetos
+- obtener resultados
 entities:
 - age
 - antecedentes

@@ -153,6 +153,9 @@ nlu:
     - siguiente
     - no lo se
     - ?
+    - no sé
+    - Siguiente
+    - Siguiente pregunta
 - intent: definiciones1
   examples: |
     - Un espejo
@@ -193,13 +196,16 @@ nlu:
     - Hacer preg defs
     - hacer preg defs
     - hacer pregunta definiciones
+    - pregunta definiciones
+    - definiciones
+
 - intent: preg_propios
   examples: |
     - Pregunta nombres propios
     - hacer preg propios
-    - pregunta con tiempo
     - Pregunta propios
     - propios
+    - pregunta nombres propios
 - intent: hacer_preg2
   examples: |
     - pregunta con timer
@@ -268,16 +274,25 @@ nlu:
   examples: |
     - Lista inmediata
     - lista inmediata
+    - Hacer pregunta lista inmediata
+    - Lista Inmediata
 - intent: chatbot_bien
   examples: |
     - Un assitente virtual
     - un chatbot
     - Un robot
+    - Un chatbot
+    - un robot
+    - chatbot
+    - asistente virtual
+    - asistente
+    - virtual
 - intent: chatbot_mal
   examples: |
     - Una persona real
     - persona
     - una persona
+    - un humano
 - intent: objeto1
   examples: |
     - Un botón
@@ -289,8 +304,9 @@ nlu:
 - intent: objeto2
   examples: |
     - Un zapato
-    - zapapto
+    - zapato
     - un zapato
+    - Zapato
 
 - intent: objeto3
   examples: |
@@ -298,22 +314,52 @@ nlu:
     - lapiz
     - lápiz
     - un lapiz
+
 - intent: objeto4
   examples: |
     - un reloj
     - un reloj de pulsera
     - Un reloj
+
 - intent: objeto5
   examples: |
     - Una guitarra
     - un instrumento
     - una guitarra
     - guitarra
+
 - intent: lista_despues
   examples: |
     - lista despues
     - hacer pregunta lista despues
+    - Lista demorada
+    - lista demorada
+    - Lista Demorada
+    - hacer pregunta lista demorada
 - intent: quien_soy
   examples: |
     - pregunta chatbot
+    - Pregunta quien soy
+    - Pregunta quién soy
+    - pregunta quién soy
     - pregunta quien soy
+    - identificación identidad
+    - identificacion identidad
+    - Identificación identidad
+    - Identificacion identidad
+    - identidad
+- intent: pregunta_objetos
+  examples: |
+    - Pregunta objetos
+    - pregunta objetos
+    - Pregunta Objetos
+    - hacer objetos
+    - hacer pregunta objetos
+
+- intent: obtener resultados
+  examples: |
+    - Obtener resultados
+    - resultados
+    - obtener resultados
+    - resultado
+    - resultado final
