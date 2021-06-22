@@ -222,30 +222,29 @@ stories:
   - action: utter_definiciones1
 - story: interactive_story_1
   steps:
-    - intent: greet
-    - action: utter_greet
-    - action: utter_ask_name
-    - intent: provide_name
-      entities:
-        - name: 'Maria Merino'
-    - slot_was_set:
-        - name: Maria Merino
-    - action: utter_gracias
-    - action: utter_ask_age
-    - intent: provide_age
-      entities:
-        - age: '21'
-    - slot_was_set:
-        - age: '21'
-    - action: utter_gracias
-    - action: utter_ask_antecedentes
-    - intent: antecedentes_si
-    - action: set_antecedentes_si
-    - action: probabilidad_inicial
-    - action: utter_enunciado_test
-    - action: utter_enunciado_definiciones
-    - action: utter_definiciones1
-
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+  - intent: provide_name
+    entities:
+    - name: Maria Merino
+  - slot_was_set:
+    - name: Maria Merino
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+    entities:
+    - age: '21'
+  - slot_was_set:
+    - age: '21'
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: antecedentes_si
+  - action: set_antecedentes_si
+  - action: probabilidad_inicial
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -271,7 +270,6 @@ stories:
   - action: utter_enunciado_test
   - action: utter_enunciado_definiciones
   - action: utter_definiciones1
-
 - story: interactive_story_1
   steps:
   - intent: hacer_preg2
@@ -401,21 +399,16 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-
-
-
 - story: Story from Conversation ID cb5961320567449bb56867acce31c1c8
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_ask_name
-
 - story: interactive_story_1
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_ask_name
-
 - story: Story from Conversation ID 2d1ade2bbfaf412ea3b7ee11168a820
   steps:
   - intent: provide_name
@@ -526,4 +519,151 @@ stories:
   - action: utter_fin_pregunta
   - action: utter_pregunta_chatbot
   - intent: chatbot_mal
-
+- story: Story from Conversation ID 1062febe8eab4647b42040f7931b2e6e
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_name
+  - intent: provide_name
+    entities:
+    - name: María
+  - slot_was_set:
+    - name: María
+  - action: utter_gracias
+  - action: utter_ask_age
+  - intent: provide_age
+    entities:
+    - age: '21'
+  - slot_was_set:
+    - age: '21'
+  - action: utter_gracias
+  - action: utter_ask_antecedentes
+  - intent: antecedentes_si
+  - action: set_antecedentes_si
+  - slot_was_set:
+    - antecedentes: si
+  - action: probabilidad_inicial
+  - slot_was_set:
+    - prob: 0
+  - action: utter_enunciado_test
+  - action: utter_enunciado_definiciones
+  - action: utter_definiciones1
+  - intent: definiciones1
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 1
+  - action: utter_definiciones2
+  - intent: definiciones2
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 2
+  - action: utter_definiciones3
+  - intent: definiciones3
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 3
+  - action: utter_definiciones4
+  - intent: definiciones4
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 4
+  - action: utter_definiciones5
+  - intent: definiciones5
+  - action: set_resultado_defs
+  - slot_was_set:
+    - res_def: 5
+  - action: utter_fin_pregunta
+  - action: utter_enunciado_propios
+  - action: utter_propios1
+  - intent: propios1
+  - action: set_resultado_propios
+  - slot_was_set:
+    - res_propios: 1
+  - action: utter_propios2
+  - intent: propios2
+  - action: set_resultado_propios
+  - slot_was_set:
+    - res_propios: 2
+  - action: utter_propios3
+  - intent: propios3
+  - action: set_resultado_propios
+  - slot_was_set:
+    - res_propios: 3
+  - action: utter_propios4
+  - intent: propios4
+  - action: set_resultado_propios
+  - slot_was_set:
+    - res_propios: 4
+  - action: utter_propios5
+  - intent: propios5
+  - action: set_resultado_propios
+  - slot_was_set:
+    - res_propios: 5
+  - action: utter_fin_pregunta
+  - slot_was_set:
+    - name: María
+  - slot_was_set:
+    - age: '21'
+  - action: utter_pregunta_lista
+  - action: utter_ask_lista
+  - intent: recibir_lista_despues
+    entities:
+    - lista_compra: agua
+    - lista_compra: pan
+    - lista_compra: pasta
+    - lista_compra: champu
+  - slot_was_set:
+    - lista_compra:
+      - agua
+      - pan
+      - pasta
+      - champu
+  - action: set_resultado_lista_despues
+  - action: utter_fin_pregunta
+  - action: utter_enunciado_objetos
+  - action: utter_objeto1
+  - intent: objeto1
+  - action: set_resultado_obj
+  - slot_was_set:
+    - res_objetos: 1
+  - action: utter_objeto2
+  - intent: objeto2
+  - action: set_resultado_obj
+  - slot_was_set:
+    - res_objetos: 2
+  - action: utter_objeto3
+  - intent: objeto3
+  - action: set_resultado_obj
+  - slot_was_set:
+    - res_objetos: 3
+  - action: utter_objeto4
+  - intent: objeto4
+  - action: set_resultado_obj
+  - slot_was_set:
+    - res_objetos: 4
+  - action: utter_objeto5
+  - intent: objeto5
+  - action: set_resultado_obj
+  - slot_was_set:
+    - res_objetos: 5
+  - action: utter_fin_pregunta
+  - action: utter_pregunta_lista_despues
+  - intent: recibir_lista_despues
+    entities:
+    - lista_compra: pan
+    - lista_compra: agua
+    - lista_compra: arroz
+  - slot_was_set:
+    - lista_compra:
+      - pan
+      - agua
+      - arroz
+  - action: set_resultado_lista_despues
+  - action: utter_fin_pregunta
+  - action: utter_pregunta_chatbot
+  - intent: chatbot_bien
+  - action: set_chatbot_bien
+  - slot_was_set:
+    - res_chatbot: 1
+  - action: utter_fin_test
+  - action: action_set_final_result
