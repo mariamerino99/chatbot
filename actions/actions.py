@@ -174,6 +174,7 @@ class SetResultadoObjetos(Action):
         res_fin = tracker.slots.get("res_final")
         resultado_final = (int(res_fin) + 1)
         print(resultado)
+        print(resultado_final)
         return [SlotSet("res_objetos", resultado), SlotSet("res_final", resultado_final)]
 
 
