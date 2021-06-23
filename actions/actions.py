@@ -65,8 +65,9 @@ class SetChatbotBien(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = 1
-
-        return [SlotSet("res_chatbot", res)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + 1)
+        return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
 
 class SetChatbotMal(Action):
     # return the name of the action
@@ -76,8 +77,9 @@ class SetChatbotMal(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = -1
-
-        return [SlotSet("res_chatbot", res)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) - 1)
+        return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
 
 class ActionSessionStart(Action):
     # return the name of the action
@@ -112,7 +114,9 @@ class SetResultadoDefs(Action):
 
         resultado = (int(res)+1)
         print(resultado)
-        return [SlotSet("res_def", resultado)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + 1)
+        return [SlotSet("res_def", resultado), SlotSet("res_final", resultado_final)]
 
 class SetResultadoListaDespues(Action):
     # return the name of the action
@@ -125,7 +129,9 @@ class SetResultadoListaDespues(Action):
         print(res)
         resultado = len(res)
         print(resultado)
-        return [SlotSet("res_lista_despues", resultado)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + resultado)
+        return [SlotSet("res_lista_despues", resultado), SlotSet("res_final", resultado_final)]
 
 class SetResultadoListaInmediata(Action):
     # return the name of the action
@@ -136,9 +142,11 @@ class SetResultadoListaInmediata(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
         print(res)
-        resultado = len(res)
+        resultado = len(res.items())
         print(resultado)
-        return [SlotSet("res_lista_inmediata", resultado)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + resultado)
+        return [SlotSet("res_lista_inmediata", resultado), SlotSet("res_final", resultado_final)]
 
 class SetResultadoPropios(Action):
     # return the name of the action
@@ -150,7 +158,9 @@ class SetResultadoPropios(Action):
         res = tracker.slots.get("res_propios")
         resultado = (int(res)+1)
         print(resultado)
-        return [SlotSet("res_propios", resultado)]
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + 1)
+        return [SlotSet("res_propios", resultado), SlotSet("res_final"), resultado_final]
 
 class SetResultadoObjetos(Action):
     # return the name of the action
@@ -161,8 +171,10 @@ class SetResultadoObjetos(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("res_objetos")
         resultado = (int(res)+1)
+        res_fin = tracker.slots.get("res_final")
+        resultado_final = (int(res_fin) + 1)
         print(resultado)
-        return [SlotSet("res_objetos", resultado)]
+        return [SlotSet("res_objetos", resultado), SlotSet("res_final", resultado_final)]
 
 
 class ProbabilidadInicial(Action):
