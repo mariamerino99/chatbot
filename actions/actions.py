@@ -134,7 +134,7 @@ class SetResultadoListaDespues(Action):
         resultado = len(res)
         print(resultado)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) + resultado)
+        resultado_final = res_fin + resultado
         return [SlotSet("res_lista_despues", resultado), SlotSet("res_final", resultado_final)]
 
 
@@ -165,7 +165,7 @@ class SetResultadoPropios(Action):
         resultado = (int(res)+1)
         print(resultado)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) + 1)
+        resultado_final = (res_fin) + 1
         return [SlotSet("res_propios", resultado), SlotSet("res_final"), resultado_final]
 
 
@@ -179,7 +179,7 @@ class SetResultadoObjetos(Action):
         res = tracker.slots.get("res_objetos")
         resultado = (int(res)+1)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) + 1)
+        resultado_final = res_fin + 1
         print(resultado)
         print(resultado_final)
         return [SlotSet("res_objetos", resultado), SlotSet("res_final", resultado_final)]
@@ -288,7 +288,7 @@ class ActionSetFinalResult(Action):
         r4 = tracker.slots.get("res_lista-despues")
         r5 = tracker.slots.get("res_objetos")
         r6 = tracker.slots.get("res_chatbot")
-        res = int(r1) + int(r2) + int(r3) + int(r4) + int(r5) + int(r6) - int(prob)
+        res = r1 + r2 + r3 + r4 + r5 + r6 - prob
         dispatcher.utter_message("El resultado es", res)
         SlotSet("res_final", res)
         if int(res) < 10:
