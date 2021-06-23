@@ -53,7 +53,7 @@ rules:
 - rule: obtener resultado
   steps:
     - intent: obtener_resultados
-    - action: utter_resultado_final
+    - action: utter_resultado_final_pro
 
 - rule: Say goodbye anytime the user says goodbye
   steps:

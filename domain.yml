@@ -222,7 +222,7 @@ responses:
     - text: Los resultados del test son más bajos de lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como la enfermedad del Alzheimer. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.
   utter_resultado_final:
     - text: |-
-        El resultado obtenido por el rest es el siguiente
+        El resultado obtenido por el test es el siguiente
            {resultado_final}
   utter_resultado_final_pro:
     - text: |-
