@@ -268,15 +268,24 @@ class ActionSetFinalResult(Action):
         r6 = tracker.slots.get("res_chatbot")
         res = int(r1) + int(r2) + int(r3) + int(r4) + int(r5) + int(r6) - int(prob)
         dispatcher.utter_message("El resultado es", res)
-        if res < 20:
+        SlotSet("res_final", res)
+        if res < 10:
             dispatcher.utter_message(text = "Hemos llegado hasta PROB 2")
             dispatcher.utter_message(response="utter_res2")
-        elif 20 < res < 29:
+            return SlotSet("resultado_final",  "Los resultados del test son más bajos de lo esperado. Esto podría llegar a "
+                                        "indicar los primeros síntomas de un trastorno cognitivo como la enfermedad "
+                                        "del Alzheimer. Los resultados de este test no son definitivos pero le "
+                                        "recomiendo que consulte con personal sanitario cualificado.")
+
+        elif 10 < res < 20:
             dispatcher.utter_message(text ="Hemos llegado hasta PROB 1")
             dispatcher.utter_message(response="utter_res1")
-        elif res > 29:
+            return SlotSet("resultado_final","Los resultados del test no son tan altos como lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como el Deterioro Cognitivo leve. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.")
+        elif res > 20:
             dispatcher.utter_message(text = "Hemos llegado hasta PROB 0")
             dispatcher.utter_message(response="utter_res0")
+            return SlotSet("resultado_final", "Los resultados del test son satisfactorios. No muestran ningún síntoma de algún trastorno cognitivo.")
+
         return []
 
 

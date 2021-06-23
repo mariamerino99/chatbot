@@ -45,13 +45,15 @@ intents:
 - quien_soy
 - recibir_lista_despues
 - pregunta_objetos
-- obtener resultados
+- obtener_resultados
 entities:
 - age
 - antecedentes
 - familiar
 - lista_compra
 - name
+- res_final
+- resultado_final
 slots:
   name:
     type: text
@@ -106,6 +108,14 @@ slots:
     influence_conversation: true
     max_value: 1.0
     min_value: 0.0
+  res_chatbot:
+    type: float
+    initial_value: 0
+  res_final:
+    type: float
+    initial_value: 0
+  resultado_final:
+    type: text
 responses:
   utter_greet:
   - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 6 preguntas que evalúan diferentes aspectos cognitivos. Antes de empezar, me gustaría preguntarle algunos datos personales.
@@ -183,7 +193,6 @@ responses:
   utter_enunciado_objetos:
   - text: La siguiente pregunta consiste en denominar objetos. Para ello, le voy a enseñar una serie de imágenes y debe responder a qué objeto correspode.
   utter_objeto1:
-
     - text: Objeto 1
       image: "https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/button.jpg"
   utter_objeto2:
@@ -211,7 +220,15 @@ responses:
     - text: Los resultados del test no son tan altos como lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como el Deterioro Cognitivo leve. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.
   utter_res2:
     - text: Los resultados del test son más bajos de lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como la enfermedad del Alzheimer. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.
-
+  utter_resultado_final:
+    - text: |-
+        El resultado obtenido por el rest es el siguiente
+           {resultado_final}
+  utter_resultado_final_pro:
+    - text: |-
+        El resultado es
+          resultado: {res_final}
+          texto: {resultado_final}
 actions:
 - action_react_to_reminder
 - action_set_reminder
@@ -272,4 +289,6 @@ actions:
 - utter_res0
 - utter_res1
 - utter_res2
+- utter_resultado_final
+- utter_resultado_final_pro
 

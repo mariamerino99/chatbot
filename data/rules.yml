@@ -50,6 +50,10 @@ rules:
     - intent: quien_soy
     - action: utter_pregunta_chatbot
 
+- rule: obtener resultado
+  steps:
+    - intent: obtener_resultados
+    - action: utter_resultado_final
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
