@@ -221,6 +221,7 @@ class ProbabilidadInicial(Action):
         print("PROB",prob)
         return [SlotSet("prob", prob)]
 
+
 class ActionSetReminder(Action):
     """Schedules a reminder, supplied with the last message's entities."""
 
@@ -247,6 +248,7 @@ class ActionSetReminder(Action):
         )
 
         return [reminder]
+
 
 class ActionReactToReminder(Action):
     """Reminds the user to call someone."""
