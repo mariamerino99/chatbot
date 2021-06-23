@@ -57,6 +57,7 @@ class SetAntecedentesNo(Action):
 
         return [SlotSet("antecedentes", "no")]
 
+
 class SetChatbotBien(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -81,6 +82,7 @@ class SetChatbotMal(Action):
         resultado_final = (int(res_fin) - int(res))
         return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
 
+
 class ActionSessionStart(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -103,6 +105,7 @@ class ActionSessionStart(Action):
 
         return events
 
+
 class SetResultadoDefs(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -117,6 +120,7 @@ class SetResultadoDefs(Action):
         res_fin = tracker.slots.get("res_final")
         resultado_final = (int(res_fin) + 1)
         return [SlotSet("res_def", resultado), SlotSet("res_final", resultado_final)]
+
 
 class SetResultadoListaDespues(Action):
     # return the name of the action
@@ -133,6 +137,7 @@ class SetResultadoListaDespues(Action):
         resultado_final = (int(res_fin) + resultado)
         return [SlotSet("res_lista_despues", resultado), SlotSet("res_final", resultado_final)]
 
+
 class SetResultadoListaInmediata(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -148,6 +153,7 @@ class SetResultadoListaInmediata(Action):
         resultado_final = (int(res_fin) + resultado)
         return [SlotSet("res_lista_inmediata", resultado), SlotSet("res_final", resultado_final)]
 
+
 class SetResultadoPropios(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -161,6 +167,7 @@ class SetResultadoPropios(Action):
         res_fin = tracker.slots.get("res_final")
         resultado_final = (int(res_fin) + 1)
         return [SlotSet("res_propios", resultado), SlotSet("res_final"), resultado_final]
+
 
 class SetResultadoObjetos(Action):
     # return the name of the action
