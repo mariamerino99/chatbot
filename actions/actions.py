@@ -78,7 +78,7 @@ class SetChatbotMal(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = -1
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) - 1)
+        resultado_final = (int(res_fin) - int(res))
         return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
 
 class ActionSessionStart(Action):
