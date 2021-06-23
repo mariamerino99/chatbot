@@ -190,7 +190,9 @@ stories:
   steps:
   - action: utter_bienvenida
   - action: utter_ask_name
-  - intent: provide_name
+  - or:
+      - intent: nlu_fallback
+      - intent: provide_name
   - action: utter_gracias
   - action: utter_ask_age
   - intent: provide_age
@@ -208,7 +210,9 @@ stories:
   steps:
   - action: utter_bienvenida
   - action: utter_ask_name
-  - intent: provide_name
+  - or:
+      - intent: nlu_fallback
+      - intent: provide_name
   - action: utter_gracias
   - action: utter_ask_age
   - intent: provide_age
