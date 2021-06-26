@@ -27,6 +27,7 @@ from rasa_sdk.executor import CollectingDispatcher
 #         return []
 
 import datetime
+import xlrd
 from typing import Text, List, Optional, Union
 from rasa_sdk.forms import FormAction
 from rasa_sdk.forms import FormValidationAction
