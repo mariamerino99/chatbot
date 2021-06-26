@@ -1,6 +1,12 @@
-import xlrd
+import openpyxl
+from openpyxl import load_workbook
 
-workbook = xlrd.open_workbook("datos.xlsx")
-worksheet = workbook.sheet_by_index(0)
-nrows = worksheet.nrows
+workbook = openpyxl.load_workbook(filename='datos.xlsx')
+worksheet = workbook['Hoja1']
+nrows = len(worksheet['A'])
+worksheet.cell(row=nrows+1, column=1, value = 'Maria')
+worksheet.cell(row=nrows+1, column=2, value = '21')
+worksheet.cell(row=nrows+1, column=3, value = 'No')
+workbook.save('datos.xlsx')
+
 print(nrows)
