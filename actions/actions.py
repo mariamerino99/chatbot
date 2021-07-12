@@ -33,6 +33,9 @@ from rasa_sdk.forms import FormAction
 from rasa_sdk.forms import FormValidationAction
 from rasa_sdk.events import ReminderScheduled, ReminderCancelled
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
 from rasa_sdk import Tracker, FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
@@ -57,8 +60,6 @@ class SetAntecedentesNo(Action):
         res = 'no'
 
         return [SlotSet("antecedentes", "no")]
-
-
 class SetChatbotBien(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -68,7 +69,7 @@ class SetChatbotBien(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = 1
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) + 1)
+        resultado_final = (res_fin + 1)
         return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
 
 class SetChatbotMal(Action):
@@ -80,8 +81,9 @@ class SetChatbotMal(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = -1
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) - int(res))
+        resultado_final = (res_fin - 1)
         return [SlotSet("res_chatbot", res), SlotSet("res_final", resultado_final)]
+
 
 
 class ActionSessionStart(Action):
@@ -106,7 +108,6 @@ class ActionSessionStart(Action):
 
         return events
 
-
 class SetResultadoDefs(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -123,6 +124,7 @@ class SetResultadoDefs(Action):
         return [SlotSet("res_def", resultado), SlotSet("res_final", resultado_final)]
 
 
+
 class SetResultadoListaDespues(Action):
     # return the name of the action
     def name(self) -> Text:
@@ -132,11 +134,13 @@ class SetResultadoListaDespues(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
         print(res)
-        resultado = len(res)
+        resultado = 0
+        resultado = len(tracker.get_slot("lista_compra"))
         print(resultado)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = res_fin + resultado
+        resultado_final = (res_fin + resultado)
         return [SlotSet("res_lista_despues", resultado), SlotSet("res_final", resultado_final)]
+
 
 
 class SetResultadoListaInmediata(Action):
@@ -147,12 +151,17 @@ class SetResultadoListaInmediata(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         res = tracker.slots.get("lista_compra")
+        dispatcher.utter_message(res)
         print(res)
-        resultado = len(res.items())
+        resultado = 0
+        dispatcher.utter_message("Hemos llegado hasta LISTA", res)
+        resultado = len(tracker.get_slot("lista_compra"))
+        dispatcher.utter_message("Hemos llegado hasta RESULTADO", resultado)
         print(resultado)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (int(res_fin) + resultado)
+        resultado_final = (res_fin + resultado)
         return [SlotSet("res_lista_inmediata", resultado), SlotSet("res_final", resultado_final)]
+
 
 
 class SetResultadoPropios(Action):
@@ -166,8 +175,9 @@ class SetResultadoPropios(Action):
         resultado = (int(res)+1)
         print(resultado)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = (res_fin) + 1
-        return [SlotSet("res_propios", resultado), SlotSet("res_final"), resultado_final]
+        resultado_final = (res_fin + 1)
+        return [SlotSet("res_propios", resultado), SlotSet("res_final", resultado_final)]
+
 
 
 class SetResultadoObjetos(Action):
@@ -180,10 +190,11 @@ class SetResultadoObjetos(Action):
         res = tracker.slots.get("res_objetos")
         resultado = (int(res)+1)
         res_fin = tracker.slots.get("res_final")
-        resultado_final = res_fin + 1
+        resultado_final = (res_fin + 1)
         print(resultado)
         print(resultado_final)
         return [SlotSet("res_objetos", resultado), SlotSet("res_final", resultado_final)]
+
 
 
 class ProbabilidadInicial(Action):
@@ -202,7 +213,9 @@ class ProbabilidadInicial(Action):
 
         # sanity check to ensure that it was filled by rasa
         if name and ages and antecedentes:
+            json = ''.join([name, ages, antecedentes])
             age = int(ages)
+
             if age < 65 and antecedentes:
                 prob = 0
             elif (age > 65 and age < 75):
@@ -217,10 +230,11 @@ class ProbabilidadInicial(Action):
                     prob = 2
             # dispatcher.utter_message("Hemos llegado hasta NOMBRE", name)
         else:
-            prob=2
+            prob=1
 
         print("PROB",prob)
-        return [SlotSet("prob", prob)]
+        json = json.join(str(prob))
+        return [SlotSet("prob", prob), ("json", json)]
 
 
 class ActionSetReminder(Action):
@@ -269,7 +283,6 @@ class ActionReactToReminder(Action):
 
         return []
 
-
 class ActionSetFinalResult(Action):
     """Reminds the user to call someone."""
 
@@ -283,30 +296,35 @@ class ActionSetFinalResult(Action):
             domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         prob = tracker.slots.get("prob")
-        r1 = tracker.slots.get("res_def")
-        r2 = tracker.slots.get("res_propios")
-        r3 = tracker.slots.get("res_lista_inmediata")
-        r4 = tracker.slots.get("res_lista-despues")
-        r5 = tracker.slots.get("res_objetos")
-        r6 = tracker.slots.get("res_chatbot")
-        res = r1 + r2 + r3 + r4 + r5 + r6 - prob
-        dispatcher.utter_message("El resultado es", res)
+        resultado_final = tracker.slots.get("res_final")
+        res = resultado_final - prob
+        #dispatcher.utter_message("El resultado es", res)
         SlotSet("res_final", res)
-        if int(res) < 10:
-            dispatcher.utter_message(text = "Hemos llegado hasta PROB 2")
-            dispatcher.utter_message(response="utter_res2")
-            return SlotSet("resultado_final",  'Los resultados del test son más bajos de lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como la enfermedad del Alzheimer. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.')
+        # Use a service account 
+        #cred = credentials.Certificate('prueba-e35e9-effc66479193.json')
+        #firebase_admin.initialize_app(cred)
+        #doc_ref = db.collection('datos').document('alovelace232')
+        #db = firestore.client()
+        if res < 21:
+            # dispatcher.utter_message(text = "Hemos llegado hasta PROB 2")
+            # dispatcher.utter_message(response="utter_res2")
+            texto = "Los resultados del test son más bajos de lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como la enfermedad del Alzheimer. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado."
+            # dispatcher.utter_message(text=texto)
+            return [SlotSet("resultado_final",  texto)]
 
-        elif 10 < int(res) < 20:
-            dispatcher.utter_message(text ="Hemos llegado hasta PROB 1")
-            dispatcher.utter_message(response="utter_res1")
-            return SlotSet("resultado_final","Los resultados del test no son tan altos como lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como el Deterioro Cognitivo leve. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.")
-        elif int(res) > 20:
-            dispatcher.utter_message(text = "Hemos llegado hasta PROB 0")
-            dispatcher.utter_message(response="utter_res0")
-            return SlotSet("resultado_final", "Los resultados del test son satisfactorios. No muestran ningún síntoma de algún trastorno cognitivo.")
+        elif 20 < res < 29:
+            # dispatcher.utter_message(text ="Hemos llegado hasta PROB 1")
+            # dispatcher.utter_message(response="utter_res1")
+            return [SlotSet("resultado_final","Los resultados del test no son tan altos como lo esperado. Esto podría llegar a indicar los primeros síntomas de un trastorno cognitivo como el Deterioro Cognitivo leve. Los resultados de este test no son definitivos pero le recomiendo que consulte con personal sanitario cualificado.")]
+        elif res > 28:
+            # dispatcher.utter_message(text = "Hemos llegado hasta PROB 0")
+            # dispatcher.utter_message(response="utter_res0")
+            return [SlotSet("resultado_final", "Los resultados del test son satisfactorios. No muestran ningún síntoma de algún trastorno cognitivo.")]
 
         return []
+
+
+
 
 
 

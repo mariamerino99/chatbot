@@ -5,8 +5,8 @@ f = open('datos.csv')
 csv_f = csv.reader(f)
 for row in csv_f:
     archivo.append(row)
-
-archivo[-1].append("5")
+name = "Maria"
+archivo.append([name])
 #print(last_row)
 #last_row.append(', 5')
 #archivo = archivo[:-1]

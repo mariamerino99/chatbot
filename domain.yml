@@ -116,6 +116,8 @@ slots:
     initial_value: 0
   resultado_final:
     type: text
+  json:
+    type: text
 responses:
   utter_greet:
   - text: ¡Hola! Soy un asistente virtual y mi trabajo es intentar prevenir enfermedades cognitivas, identificándolas a tiempo. Si está preparado, podemos comenzar a hacer un test mini-mental. Consiste en 6 preguntas que evalúan diferentes aspectos cognitivos. Antes de empezar, me gustaría preguntarle algunos datos personales.
